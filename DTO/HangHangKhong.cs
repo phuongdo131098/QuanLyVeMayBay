@@ -21,6 +21,11 @@ namespace DTO
         {
             get { return tenHHK; }
             set { tenHHK = value; }
+        }         
+        public HangHangKhong(string maHHK, string tenHHK)
+        {
+            this.maHHK = maHHK;
+            this.tenHHK = tenHHK;
         }
     }
 }

@@ -36,5 +36,13 @@ namespace DTO
             get { return ghiChu; }
             set { ghiChu = value; }
         }
+
+        public ChiTietCB(string maCB, string maSBTG, int thoiGianDung, string ghiChu)
+        {
+            this.maCB = maCB;
+            this.maSBTG = maSBTG;
+            this.thoiGianDung = thoiGianDung;
+            this.ghiChu = ghiChu;
+        }
     }
 }

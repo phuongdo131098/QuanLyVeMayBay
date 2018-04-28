@@ -36,5 +36,12 @@ namespace DTO
             get { return ngayApDung; }
             set { ngayApDung = value; }
         }
+        public ThamSo(string maTS, string tenTS, int giaTri, DateTime ngayApDung)
+        {
+            this.maTS = maTS;
+            this.tenTS = tenTS;
+            this.giaTri = giaTri;
+            this.ngayApDung = ngayApDung;
+        }
     }
 }

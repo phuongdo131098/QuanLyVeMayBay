@@ -17,13 +17,14 @@ namespace QuanLyBanVe
         {
             InitializeComponent();
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AutoResizeColumns();
+            dataGridView1.ReadOnly = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             LoadData();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           Form dangNhap = new DangNhap();
-            dangNhap.ShowDialog();
+           //Form dangNhap = new DangNhap();
+           // dangNhap.ShowDialog();
         }
         private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -48,7 +49,33 @@ namespace QuanLyBanVe
             adapter.Fill(datb);
 
             dataGridView1.DataSource = datb;
+           
             conn.Close();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+        }
+
+
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ReadOnly= false;
         }
     }
 }

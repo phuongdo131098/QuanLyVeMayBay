@@ -25,6 +25,13 @@ namespace DTO
         }
         private string cmnd;
 
+        private int tuoi;
+
+        public int Tuoi
+        {
+            get { return tuoi; }
+            set { tuoi = value; }
+        }
         public string Cmnd
         {
             get { return cmnd; }
@@ -43,6 +50,16 @@ namespace DTO
         {
             get { return sdt; }
             set { sdt = value; }
+        }
+
+        public KhachHang(string maKH, string hoTen, int tuoi, string cmnd, string diaChi, string sdt)
+        {
+            this.maKH = maKH;
+            this.hoTen = hoTen;
+            this.tuoi = tuoi;
+            this.cmnd = cmnd;
+            this.diaChi = diaChi;
+            this.sdt = sdt;
         }
     }
 }

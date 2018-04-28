@@ -15,12 +15,17 @@ namespace DTO
             get { return maSB; }
             set { maSB = value; }
         }
-        private string TenSB;
+        private string tenSB;
 
         public string TenSB1
         {
-            get { return TenSB; }
-            set { TenSB = value; }
+            get { return tenSB; }
+            set { tenSB = value; }
+        }
+        public SanBay(string maSB, string tenSB)
+        {
+            this.maSB = maSB;
+            this.tenSB = tenSB;
         }
     }
 }

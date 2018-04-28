@@ -43,5 +43,14 @@ namespace DTO
             get { return daThanhToan; }
             set { daThanhToan = value; }
         }
+
+        public PhieuDatMua(string maPD, string maVe, string maKH, DateTime thoiGianDat, bool daThanhToan)
+        {
+            this.maPD = maPD;
+            this.maVe = maVe;
+            this.maKH = maKH;
+            this.thoiGianDat = thoiGianDat;
+            this.daThanhToan = daThanhToan;
+        }
     }
 }

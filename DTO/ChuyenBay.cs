@@ -62,5 +62,16 @@ namespace DTO
             get { return giaVe; }
             set { giaVe = value; }
         }
+        public ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, int thoiGianBay, int gheHang1, int gheHang2, int gia)
+        {
+            this.maCB = maCB;
+            this.sanBayDi = sanBayDi;
+            this.sanBayDen = sanBayDen;
+            this.maHHK = maHHK;
+            this.thoiGianBay = thoiGianBay;
+            this.soGheHang1 = gheHang1;
+            this.soGheHang2 = gheHang2;
+            this.giaVe = gia;
+        }
     }
 }
