@@ -20,12 +20,14 @@ namespace QuanLyBanVe
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             if (txtTenDangNhap.Text == "admin" && txtMatKhau.Text == "admin")
+            {
                 Close();
+            }
             else
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
                 txtMatKhau.Text = "";
-            }
+            }            
         }
     }
 }

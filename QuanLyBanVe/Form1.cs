@@ -16,15 +16,14 @@ namespace QuanLyBanVe
         public Form1()
         {
             InitializeComponent();
-            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersVisible=true;
             dataGridView1.ReadOnly = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             LoadData();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           //Form dangNhap = new DangNhap();
-           // dangNhap.ShowDialog();
+
         }
         private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -52,11 +51,11 @@ namespace QuanLyBanVe
            
             conn.Close();
         }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            btnBanVe.Enabled = true;
         }
 
 
@@ -65,17 +64,30 @@ namespace QuanLyBanVe
         {
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnBanVe.Enabled = false;
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            btnBanVe.Enabled = false;
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             dataGridView1.ReadOnly= false;
+        }
+
+        private void btnBanVe_Click(object sender, EventArgs e)
+        {
+            //formBanVe.Show();
+        }
+
+        private void llbTaoThanhVien_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TaoThanhVien taoThanhVien = new TaoThanhVien();
+            taoThanhVien.ShowDialog();
         }
     }
 }

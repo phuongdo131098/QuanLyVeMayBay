@@ -22,3 +22,4 @@ D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.DangNhap
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.Form1.resources
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.Cache
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources

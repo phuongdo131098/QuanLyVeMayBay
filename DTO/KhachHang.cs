@@ -32,6 +32,13 @@ namespace DTO
             get { return tuoi; }
             set { tuoi = value; }
         }
+        private bool gioiTinh;
+
+        public bool GioiTinh
+        {
+            get { return gioiTinh; }
+            set { gioiTinh = value; }
+        }
         public string Cmnd
         {
             get { return cmnd; }
