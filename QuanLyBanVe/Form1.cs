@@ -124,30 +124,29 @@ namespace QuanLyBanVe
                             using (SqlCommand command = new SqlCommand("SuaVe", connection))
                             {
                                 command.CommandType = CommandType.StoredProcedure;
+                                SqlParameter parameter;
 
-                                //SqlParameter parameter = new SqlParameter("@MaCB", textBox1.Text);
-                                //command.Parameters.Add(parameter);
+                                parameter = new SqlParameter("@MaCB", textBox1.Text);
+                                command.Parameters.Add(parameter);
 
-                                //parameter = new SqlParameter("@Ms", txtHoTen.Text);
-                                //command.Parameters.Add(parameter);
+                                parameter = new SqlParameter("@MaSBDi", textBox2.Text);
+                                command.Parameters.Add(parameter);
 
-                                //parameter = new SqlParameter("@Tuoi", Int32.Parse(txtTuoi.Text));
-                                //command.Parameters.Add(parameter);
-                                //bool b = false; ;
-                                //if (rbtnNam.Checked)
-                                //    b = true;
-                                //parameter = new SqlParameter("@GioiTinh", b);
-                                //command.Parameters.Add(parameter);
+                                parameter = new SqlParameter("@MaSBDen", textBox3.Text);
+                                command.Parameters.Add(parameter);
 
-                                //parameter = new SqlParameter("@CMND", txtCMND.Text);
-                                //command.Parameters.Add(parameter);
+                                parameter = new SqlParameter("@MaHHK", textBox4.Text);
+                                command.Parameters.Add(parameter);
 
-                                //parameter = new SqlParameter("@DiaChi", txtDiaChi.Text);
-                                //command.Parameters.Add(parameter);
+                                parameter = new SqlParameter("@CMND", txtCMND.Text);
+                                command.Parameters.Add(parameter);
 
-                                //parameter = new SqlParameter("@SDT", txtSDT.Text);
-                                //command.Parameters.Add(parameter);
-                                //command.ExecuteNonQuery();
+                                parameter = new SqlParameter("@DiaChi", txtDiaChi.Text);
+                                command.Parameters.Add(parameter);
+
+                                parameter = new SqlParameter("@SDT", txtSDT.Text);
+                                command.Parameters.Add(parameter);
+                                command.ExecuteNonQuery();
                             }
                             break;
                         }
