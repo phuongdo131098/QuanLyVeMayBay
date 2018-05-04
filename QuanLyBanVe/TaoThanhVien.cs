@@ -24,20 +24,20 @@ namespace QuanLyBanVe
             try
             {
                 SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = @"Data Source=DESKTOP-260M5KJ;Initial Catalog=QLVeMayBay;Integrated Security=True";
+                conn.ConnectionString = Properties.Resources.localConnectionString_VietAnh;
                 conn.Open();
 
                 using (SqlCommand comm = new SqlCommand("TaoThanhVien", conn))
                 {
                     comm.CommandType = CommandType.StoredProcedure;
 
-                    SqlParameter para = new SqlParameter("@MaKH", txtMaKH.Text.ToString());
+                    SqlParameter para = new SqlParameter("@MaKH", txtMaKH.Text);
                     comm.Parameters.Add(para);
 
-                    para = new SqlParameter("@HoTen", txtHoTen.Text.ToString());
+                    para = new SqlParameter("@HoTen", txtHoTen.Text);
                     comm.Parameters.Add(para);
 
-                    para = new SqlParameter("@Tuoi", Int32.Parse(txtTuoi.Text.ToString()));
+                    para = new SqlParameter("@Tuoi", Int32.Parse(txtTuoi.Text));
                     comm.Parameters.Add(para);
                     bool b = false; ;
                     if (rbtnNam.Checked)
@@ -45,13 +45,13 @@ namespace QuanLyBanVe
                     para = new SqlParameter("@GioiTinh", b);
                     comm.Parameters.Add(para);
 
-                    para = new SqlParameter("@CMND", txtCMND.Text.ToString());
+                    para = new SqlParameter("@CMND", txtCMND.Text);
                     comm.Parameters.Add(para);
 
-                    para = new SqlParameter("@DiaChi", txtDiaChi.Text.ToString());
+                    para = new SqlParameter("@DiaChi", txtDiaChi.Text);
                     comm.Parameters.Add(para);
 
-                    para = new SqlParameter("@SDT", txtSDT.Text.ToString());
+                    para = new SqlParameter("@SDT", txtSDT.Text);
                     comm.Parameters.Add(para);
                     comm.ExecuteNonQuery();
                 }

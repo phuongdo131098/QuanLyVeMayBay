@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLy.cs" />
     <Compile Include="TaoThanhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +98,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TaoThanhVien.resx">
       <DependentUpon>TaoThanhVien.cs</DependentUpon>

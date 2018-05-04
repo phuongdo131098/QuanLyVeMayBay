@@ -16,49 +16,29 @@ namespace QuanLyBanVe
         public Form1()
         {
             InitializeComponent();
-            dataGridView1.RowHeadersVisible=true;
+            dataGridView1.RowHeadersVisible = true;
             dataGridView1.ReadOnly = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            LoadData();
+            QuanLy.UpdateDataGridView(dataGridView1);
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
         private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form baoCao = new BaoCao();
             baoCao.ShowDialog();
         }
-        public void LoadData()
-        {
-            
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Data Source=DESKTOP-260M5KJ;Initial Catalog=QLVeMayBay;Integrated Security=True";
-            conn.Open();
 
-            SqlCommand comm = new SqlCommand("LietKeCB", conn);
-            comm.CommandType = CommandType.StoredProcedure;
-
-            //comm.EndExecuteNonQuery();
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = comm;
-            DataTable datb = new DataTable();
-            adapter.Fill(datb);
-
-            dataGridView1.DataSource = datb;
-           
-            conn.Close();
-        }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnBanVe.Enabled = true;
         }
-
-
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -76,7 +56,16 @@ namespace QuanLyBanVe
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            dataGridView1.ReadOnly= false;
+            if (dataGridView1.SelectedRows.Count == 1 && !dataGridView1.SelectedRows[0].IsNewRow)
+            {
+                tabControl1.Enabled = false;
+                panel1.Visible = true;
+
+            }
+            else
+            {
+                MessageBox.Show("Chỉ được sửa 1 hàng có dữ liệu tại một thời điểm.");
+            }
         }
 
         private void btnBanVe_Click(object sender, EventArgs e)
@@ -88,6 +77,95 @@ namespace QuanLyBanVe
         {
             TaoThanhVien taoThanhVien = new TaoThanhVien();
             taoThanhVien.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            {
+                connection.Open();
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        using (SqlCommand command = new SqlCommand("DELETE FROM CHUYENBAY WHERE MACB = '" + row.Cells[0].Value.ToString() + "'", connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+                QuanLy.UpdateDataGridView(dataGridView1);
+            }
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            tabControl1.Enabled = false;
+            panel1.Visible = true;
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                {
+                    connection.Open();
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells[0].Value.ToString() == textBox1.Text)
+                        {
+                            using (SqlCommand command = new SqlCommand("SuaVe", connection))
+                            {
+                                command.CommandType = CommandType.StoredProcedure;
+
+                                //SqlParameter parameter = new SqlParameter("@MaCB", textBox1.Text);
+                                //command.Parameters.Add(parameter);
+
+                                //parameter = new SqlParameter("@Ms", txtHoTen.Text);
+                                //command.Parameters.Add(parameter);
+
+                                //parameter = new SqlParameter("@Tuoi", Int32.Parse(txtTuoi.Text));
+                                //command.Parameters.Add(parameter);
+                                //bool b = false; ;
+                                //if (rbtnNam.Checked)
+                                //    b = true;
+                                //parameter = new SqlParameter("@GioiTinh", b);
+                                //command.Parameters.Add(parameter);
+
+                                //parameter = new SqlParameter("@CMND", txtCMND.Text);
+                                //command.Parameters.Add(parameter);
+
+                                //parameter = new SqlParameter("@DiaChi", txtDiaChi.Text);
+                                //command.Parameters.Add(parameter);
+
+                                //parameter = new SqlParameter("@SDT", txtSDT.Text);
+                                //command.Parameters.Add(parameter);
+                                //command.ExecuteNonQuery();
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Khóa chính chưa được nhập.");
+            }
+            QuanLy.UpdateDataGridView(dataGridView1);
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+
+            panel1.Visible = false;
+            tabControl1.Enabled = true;
         }
     }
 }
