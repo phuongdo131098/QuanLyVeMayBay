@@ -12,6 +12,16 @@ namespace QuanLyBanVe
 {
     public partial class DangNhap : Form
     {
+        private DialogResult loginResult;
+
+        public DialogResult LoginResult
+        {
+            get
+            {
+                return loginResult;
+            }
+        }
+
         public DangNhap()
         {
             InitializeComponent();
@@ -21,13 +31,17 @@ namespace QuanLyBanVe
         {
             if (txtTenDangNhap.Text == "admin" && txtMatKhau.Text == "admin")
             {
+                this.loginResult = DialogResult.OK;
+                MessageBox.Show("Đăng nhập thành công. Đang khởi động CSDL...");
                 Close();
             }
             else
             {
+                this.loginResult = DialogResult.Retry;
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
-                txtMatKhau.Text = "";
-            }            
+                txtTenDangNhap.Focus();
+                txtMatKhau.Clear();
+            }
         }
     }
 }
