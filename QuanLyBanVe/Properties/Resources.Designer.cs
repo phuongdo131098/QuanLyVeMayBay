@@ -61,6 +61,26 @@ namespace QuanLyBanVe.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap appbar_close {
+            get {
+                object obj = ResourceManager.GetObject("appbar.close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_window {
+            get {
+                object obj = ResourceManager.GetObject("close_window", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data Source=DESKTOP-260M5KJ;Initial Catalog=QLVeMayBay;Integrated Security=True.
         /// </summary>
         internal static string localConnectionString_HoangAn {
@@ -75,6 +95,36 @@ namespace QuanLyBanVe.Properties {
         internal static string localConnectionString_VietAnh {
             get {
                 return ResourceManager.GetString("localConnectionString_VietAnh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_close_icon {
+            get {
+                object obj = ResourceManager.GetObject("round-close-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_close_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("round_close_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap round_close_icon2 {
+            get {
+                object obj = ResourceManager.GetObject("round_close_icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

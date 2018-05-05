@@ -116,6 +116,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round-close-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round_close_icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\round_close_icon2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

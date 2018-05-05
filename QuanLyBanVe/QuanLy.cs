@@ -13,16 +13,29 @@ namespace QuanLyBanVe
     {
         public static void UpdateDataGridView(DataGridView dataGridView1)
         {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = Properties.Resources.localConnectionString_VietAnh;
-            connection.Open();
-            SqlCommand comm = new SqlCommand("SELECT * FROM CHUYENBAY", connection);
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = comm;
-            DataTable datb = new DataTable();
-            adapter.Fill(datb);
-            dataGridView1.DataSource = datb;
-            connection.Close();
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            {
+                connection.Open();
+                SqlCommand comm = new SqlCommand("SELECT * FROM CHUYENBAY", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable datb = new DataTable();
+                adapter.Fill(datb);
+                dataGridView1.DataSource = datb;
+            }
+            dataGridView1.ClearSelection();
+        }
+
+        public static DataGridViewRow FindRowInDataGridView(DataGridView dgv, string keyword)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == keyword)
+                {
+                    return row;
+                }
+            }
+            return null;
         }
     }
 }

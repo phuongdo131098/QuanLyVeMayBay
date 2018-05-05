@@ -117,12 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="localConnectionString_VietAnh" xml:space="preserve">
+    <value>Data Source=VA-DELLV3560;Initial Catalog=QLVeMayBay;Integrated Security=True</value>
+    <comment>Connection string của Việt Anh</comment>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="appbar.close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\appbar.close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="round-close-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\round-close-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close-window.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="round_close_icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\round_close_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="localConnectionString_HoangAn" xml:space="preserve">
     <value>Data Source=DESKTOP-260M5KJ;Initial Catalog=QLVeMayBay;Integrated Security=True</value>
     <comment>Connection string của Hoàng Ân</comment>
   </data>
-  <data name="localConnectionString_VietAnh" xml:space="preserve">
-    <value>Data Source=VA-DELLV3560;Initial Catalog=QLVeMayBay;Integrated Security=True</value>
-    <comment>Connection string của Việt Anh</comment>
+  <data name="round_close_icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\round_close_icon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
