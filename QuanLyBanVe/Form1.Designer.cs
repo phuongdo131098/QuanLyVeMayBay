@@ -359,14 +359,14 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnSaoChep);
-            this.tabPage1.Controls.Add(this.pnlSua);
             this.tabPage1.Controls.Add(this.btnClearSelection);
             this.tabPage1.Controls.Add(this.btnSelectAll);
+            this.tabPage1.Controls.Add(this.btnSaoChep);
+            this.tabPage1.Controls.Add(this.btnSua);
+            this.tabPage1.Controls.Add(this.btnXoa);
+            this.tabPage1.Controls.Add(this.pnlSua);
             this.tabPage1.Controls.Add(this.pnlThem);
             this.tabPage1.Controls.Add(this.btnBanVe);
-            this.tabPage1.Controls.Add(this.btnXoa);
-            this.tabPage1.Controls.Add(this.btnSua);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
@@ -378,7 +378,7 @@
             // 
             // btnSaoChep
             // 
-            this.btnSaoChep.Location = new System.Drawing.Point(165, 7);
+            this.btnSaoChep.Location = new System.Drawing.Point(162, 7);
             this.btnSaoChep.Name = "btnSaoChep";
             this.btnSaoChep.Size = new System.Drawing.Size(75, 27);
             this.btnSaoChep.TabIndex = 8;
@@ -628,9 +628,9 @@
             // 
             // btnClearSelection
             // 
-            this.btnClearSelection.Location = new System.Drawing.Point(352, 7);
+            this.btnClearSelection.Location = new System.Drawing.Point(351, 7);
             this.btnClearSelection.Name = "btnClearSelection";
-            this.btnClearSelection.Size = new System.Drawing.Size(110, 27);
+            this.btnClearSelection.Size = new System.Drawing.Size(100, 27);
             this.btnClearSelection.TabIndex = 7;
             this.btnClearSelection.Text = "Bỏ chọn tất cả";
             this.btnClearSelection.UseVisualStyleBackColor = true;
@@ -638,9 +638,9 @@
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(246, 7);
+            this.btnSelectAll.Location = new System.Drawing.Point(264, 7);
             this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(100, 27);
+            this.btnSelectAll.Size = new System.Drawing.Size(83, 27);
             this.btnSelectAll.TabIndex = 6;
             this.btnSelectAll.Text = "Chọn tất cả";
             this.btnSelectAll.UseVisualStyleBackColor = true;
@@ -907,7 +907,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(84, 7);
+            this.btnXoa.Location = new System.Drawing.Point(83, 7);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 27);
             this.btnXoa.TabIndex = 3;
@@ -917,7 +917,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(3, 7);
+            this.btnSua.Location = new System.Drawing.Point(4, 7);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 27);
             this.btnSua.TabIndex = 2;

@@ -368,6 +368,7 @@ namespace QuanLyBanVe
             textBox6.Clear();
             textBox7.Clear();
             textBox8.Clear();
+            btnLuuMoi.Enabled = false;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -379,6 +380,7 @@ namespace QuanLyBanVe
             textBox11.Clear();
             textBox10.Clear();
             textBox9.Clear();
+            btnLuuThayDoi.Enabled = false;
         }
     }
 }
