@@ -36,3 +36,4 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.Cache
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache

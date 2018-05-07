@@ -32,7 +32,7 @@ namespace QuanLyBanVe
             if (txtTenDangNhap.Text == "admin" && txtMatKhau.Text == "admin")
             {
                 this.loginResult = DialogResult.OK;
-                MessageBox.Show("Đăng nhập thành công. Đang khởi động CSDL...");
+                MessageBox.Show("Đăng nhập thành công!");
                 Close();
             }
             else

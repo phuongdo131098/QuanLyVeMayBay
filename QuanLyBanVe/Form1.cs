@@ -19,7 +19,9 @@ namespace QuanLyBanVe
             QuanLy.UpdateDataGridView(dataGridView1);
         }
 
-        private void Form1_Load(object sender, EventArgs e) { }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -79,15 +81,12 @@ namespace QuanLyBanVe
         private void btnSua_Click(object sender, EventArgs e)
         {
             pnlSua.Visible = true;
-            textBox16.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            textBox15.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            textBox14.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            textBox13.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            textBox16.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();            
             textBox12.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             textBox11.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
             textBox10.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
             textBox9.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
-            textBox15.Focus();
+            
             btnLuuThayDoi.Enabled = false;
         }
 
@@ -96,7 +95,7 @@ namespace QuanLyBanVe
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa vĩnh viễn (các) bản ghi này?", "Xóa bản ghi", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                 {
                     connection.Open();
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
@@ -119,9 +118,7 @@ namespace QuanLyBanVe
         private void btnSaoChep_Click(object sender, EventArgs e)
         {
             textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            textBox2.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            textBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            textBox4.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            
             textBox5.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             textBox6.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
             textBox7.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
@@ -145,26 +142,26 @@ namespace QuanLyBanVe
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                     {
                         connection.Open();
 
-                        SqlCommand command = new SqlCommand("ThemVe", connection);
+                        SqlCommand command = new SqlCommand("ThemCB", connection);
                         command.CommandType = CommandType.StoredProcedure;
-
+                         
                         SqlParameter parameter;
                         parameter = new SqlParameter("@MaCB", textBox1.Text);
                         command.Parameters.Add(parameter);
 
-                        parameter = new SqlParameter("@MaSBDi", textBox2.Text);
+                        parameter = new SqlParameter("@MaSBDi", comboBox1.Text);
                         command.Parameters.Add(parameter);
 
-                        parameter = new SqlParameter("@MaSBDen", textBox3.Text);
+                        parameter = new SqlParameter("@MaSBDen", comboBox2.Text);
                         command.Parameters.Add(parameter);
 
-                        parameter = new SqlParameter("@MaHHK", textBox4.Text);
+                        parameter = new SqlParameter("@MaHHK", comboBox3.Text);
                         command.Parameters.Add(parameter);
-
+                    
                         parameter = new SqlParameter("@ThoiGianBay", int.Parse(textBox5.Text));
                         command.Parameters.Add(parameter);
 
@@ -203,24 +200,24 @@ namespace QuanLyBanVe
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                 {
                     connection.Open();
 
-                    SqlCommand command = new SqlCommand("SuaVe", connection);
+                    SqlCommand command = new SqlCommand("SuaCB", connection);
                     command.CommandType = CommandType.StoredProcedure;
 
                     SqlParameter parameter;
                     parameter = new SqlParameter("@MaCB", textBox16.Text);
                     command.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@MaSBDi", textBox15.Text);
+                    parameter = new SqlParameter("@MaSBDi", cbbMaSBDi.Text);
                     command.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@MaSBDen", textBox14.Text);
+                    parameter = new SqlParameter("@MaSBDen", cbbMaSBDen.Text);
                     command.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@MaHHK", textBox13.Text);
+                    parameter = new SqlParameter("@MaHHK", cbbHHK.Text);
                     command.Parameters.Add(parameter);
 
                     parameter = new SqlParameter("@ThoiGianBay", int.Parse(textBox12.Text));
@@ -240,10 +237,10 @@ namespace QuanLyBanVe
                 QuanLy.UpdateDataGridView(dataGridView1);
                 // Tắt sửa chuyến bay
                 pnlSua.Visible = false;
-                textBox16.Clear();
-                textBox15.Clear();
-                textBox14.Clear();
-                textBox13.Clear();
+                cbbMaSBDen.Text = null;
+                cbbMaSBDi.Text = null;
+                cbbHHK.Text = null;
+                textBox16.Clear();           
                 textBox12.Clear();
                 textBox11.Clear();
                 textBox10.Clear();
@@ -258,32 +255,14 @@ namespace QuanLyBanVe
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             pnlSua.Visible = false;
+            cbbMaSBDen.Text = null;
+            cbbMaSBDi.Text = null;
+            cbbHHK.Text = null;
             textBox16.Clear();
-            textBox15.Clear();
-            textBox14.Clear();
-            textBox13.Clear();
             textBox12.Clear();
             textBox11.Clear();
             textBox10.Clear();
             textBox9.Clear();
-        }
-
-        private void textBox15_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
@@ -361,9 +340,9 @@ namespace QuanLyBanVe
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
+            comboBox1.Text = null;
+            comboBox2.Text = null;
+            comboBox3.Text = null;
             textBox5.Clear();
             textBox6.Clear();
             textBox7.Clear();
@@ -373,14 +352,88 @@ namespace QuanLyBanVe
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            textBox15.Clear();
-            textBox14.Clear();
-            textBox13.Clear();
+            cbbMaSBDen.Text = null;
+            cbbMaSBDi.Text = null;
+            cbbHHK.Text = null;
             textBox12.Clear();
             textBox11.Clear();
             textBox10.Clear();
             textBox9.Clear();
             btnLuuThayDoi.Enabled = false;
+        }
+
+        private void cbbNoiDi_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadSanBay(cbbNoiDi);
+        }
+        private void cbbNoiDen_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadSanBay(cbbNoiDen);
+        }
+        private void btnTraCuu_Click(object sender, EventArgs e)
+        {
+            if (cbbNoiDen.Text == cbbNoiDi.Text)
+            {
+                MessageBox.Show("Không thể tra cứu");
+            }
+            else
+            {
+                QuanLy.TraCuu(dataGridView2, cbbNoiDi, cbbNoiDen, dateTraCuu);
+            }
+         
+        }
+
+        private void cbbMaSBDi_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadSanBay(cbbMaSBDi);
+
+        }
+        private void cbbMaSBDen_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadSanBay(cbbMaSBDen);
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnBanVe2.Enabled = true;
+        }
+
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadHHK(cbbHHK);
+        }
+
+        private void cbbMaSBDi_TextChanged(object sender, EventArgs e)
+        {
+            if (!btnLuuThayDoi.Enabled)
+                btnLuuThayDoi.Enabled = true;
+        }
+
+        private void cbbMaSBDen_TextChanged(object sender, EventArgs e)
+        {
+            if (!btnLuuThayDoi.Enabled)
+                btnLuuThayDoi.Enabled = true;
+        }
+
+        private void cbbHHK_TextChanged(object sender, EventArgs e)
+        {
+            if (!btnLuuThayDoi.Enabled)
+                btnLuuThayDoi.Enabled = true;
+        }
+
+        private void comboBox1_DropDown_1(object sender, EventArgs e)
+        {
+            QuanLy.LoadSanBay(comboBox1);
+        }
+
+        private void comboBox2_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadSanBay(comboBox2);
+        }
+
+        private void comboBox3_DropDown(object sender, EventArgs e)
+        {
+            QuanLy.LoadHHK(comboBox3);
         }
     }
 }
