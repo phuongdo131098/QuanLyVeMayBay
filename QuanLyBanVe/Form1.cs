@@ -455,24 +455,22 @@ namespace QuanLyBanVe
         {
             if (e.Button == MouseButtons.Right)
             {
-                contextMenuStrip1.Show(MousePosition.X,MousePosition.Y);
+                DataGridView.HitTestInfo hti = ((DataGridView)sender).HitTest(e.X, e.Y);
+                if (hti.Type == DataGridViewHitTestType.Cell)
+                {
+                    if (!dataGridView1.Rows[hti.RowIndex].Selected)
+                    {
+                        contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[hti.RowIndex].Selected = true;
+                    }
+                }
             }
-            
-        }
-          
+            pictureBox1_Click(sender, e);
+        }       
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnXoa_Click(sender, e);
-        }
-
-        private void dataGridView1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView1.SelectedRows.AsParallel();
         }
 
         private void làmMớiToolStripMenuItem_Click(object sender, EventArgs e)
