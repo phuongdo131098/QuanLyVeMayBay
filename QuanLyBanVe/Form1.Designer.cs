@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,8 @@
             this.cbbMaVe = new System.Windows.Forms.ComboBox();
             this.cbbMaCB = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnBanVe2 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbbNoiDen = new System.Windows.Forms.ComboBox();
@@ -60,7 +63,10 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.pnlSua = new System.Windows.Forms.Panel();
+            this.cbbHHK = new System.Windows.Forms.ComboBox();
+            this.cbbMaSBDen = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.cbbMaSBDi = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLuuThayDoi = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -78,6 +84,9 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.pnlThem = new System.Windows.Forms.Panel();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLuuMoi = new System.Windows.Forms.Button();
@@ -99,14 +108,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.llbTaoThanhVien = new System.Windows.Forms.LinkLabel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbbMaSBDi = new System.Windows.Forms.ComboBox();
-            this.cbbMaSBDen = new System.Windows.Forms.ComboBox();
-            this.btnBanVe2 = new System.Windows.Forms.Button();
-            this.cbbHHK = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.làmMớiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -120,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -207,7 +213,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(866, 466);
+            this.tabPage3.Size = new System.Drawing.Size(910, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cập nhật vé";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -281,6 +287,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tra cứu";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnBanVe2
+            // 
+            this.btnBanVe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBanVe2.Location = new System.Drawing.Point(828, 21);
+            this.btnBanVe2.Name = "btnBanVe2";
+            this.btnBanVe2.Size = new System.Drawing.Size(75, 27);
+            this.btnBanVe2.TabIndex = 10;
+            this.btnBanVe2.Text = "Bán vé";
+            this.btnBanVe2.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(247, 7);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(91, 15);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Ngày khởi hành";
             // 
             // label4
             // 
@@ -454,6 +479,28 @@
             this.pnlSua.TabIndex = 6;
             this.pnlSua.Visible = false;
             // 
+            // cbbHHK
+            // 
+            this.cbbHHK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbHHK.FormattingEnabled = true;
+            this.cbbHHK.Location = new System.Drawing.Point(329, 27);
+            this.cbbHHK.Name = "cbbHHK";
+            this.cbbHHK.Size = new System.Drawing.Size(86, 21);
+            this.cbbHHK.TabIndex = 11;
+            this.cbbHHK.DropDown += new System.EventHandler(this.comboBox1_DropDown);
+            this.cbbHHK.TextChanged += new System.EventHandler(this.cbbHHK_TextChanged);
+            // 
+            // cbbMaSBDen
+            // 
+            this.cbbMaSBDen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbMaSBDen.FormattingEnabled = true;
+            this.cbbMaSBDen.Location = new System.Drawing.Point(231, 26);
+            this.cbbMaSBDen.Name = "cbbMaSBDen";
+            this.cbbMaSBDen.Size = new System.Drawing.Size(92, 21);
+            this.cbbMaSBDen.TabIndex = 10;
+            this.cbbMaSBDen.DropDown += new System.EventHandler(this.cbbMaSBDen_DropDown);
+            this.cbbMaSBDen.TextChanged += new System.EventHandler(this.cbbMaSBDen_TextChanged);
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -465,6 +512,17 @@
             this.pictureBox3.TabIndex = 29;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // cbbMaSBDi
+            // 
+            this.cbbMaSBDi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbbMaSBDi.FormattingEnabled = true;
+            this.cbbMaSBDi.Location = new System.Drawing.Point(142, 26);
+            this.cbbMaSBDi.Name = "cbbMaSBDi";
+            this.cbbMaSBDi.Size = new System.Drawing.Size(83, 21);
+            this.cbbMaSBDi.TabIndex = 9;
+            this.cbbMaSBDi.DropDown += new System.EventHandler(this.cbbMaSBDi_DropDown);
+            this.cbbMaSBDi.TextChanged += new System.EventHandler(this.cbbMaSBDi_TextChanged);
             // 
             // pictureBox1
             // 
@@ -671,6 +729,36 @@
             this.pnlThem.Name = "pnlThem";
             this.pnlThem.Size = new System.Drawing.Size(898, 76);
             this.pnlThem.TabIndex = 5;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(355, 27);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(83, 21);
+            this.comboBox3.TabIndex = 31;
+            this.comboBox3.DropDown += new System.EventHandler(this.comboBox3_DropDown);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(268, 28);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(83, 21);
+            this.comboBox2.TabIndex = 30;
+            this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(179, 28);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(83, 21);
+            this.comboBox1.TabIndex = 29;
+            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown_1);
             // 
             // pictureBox2
             // 
@@ -884,7 +972,9 @@
             this.dataGridView1.Size = new System.Drawing.Size(899, 421);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // tabControl1
             // 
@@ -917,87 +1007,35 @@
             this.llbTaoThanhVien.VisitedLinkColor = System.Drawing.Color.Blue;
             this.llbTaoThanhVien.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbTaoThanhVien_LinkClicked);
             // 
-            // label14
+            // contextMenuStrip1
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(247, 7);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 15);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Ngày khởi hành";
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sửaToolStripMenuItem,
+            this.xóaToolStripMenuItem,
+            this.làmMớiToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
             // 
-            // cbbMaSBDi
+            // sửaToolStripMenuItem
             // 
-            this.cbbMaSBDi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbMaSBDi.FormattingEnabled = true;
-            this.cbbMaSBDi.Location = new System.Drawing.Point(142, 26);
-            this.cbbMaSBDi.Name = "cbbMaSBDi";
-            this.cbbMaSBDi.Size = new System.Drawing.Size(83, 21);
-            this.cbbMaSBDi.TabIndex = 9;
-            this.cbbMaSBDi.DropDown += new System.EventHandler(this.cbbMaSBDi_DropDown);
-            this.cbbMaSBDi.TextChanged += new System.EventHandler(this.cbbMaSBDi_TextChanged);
+            this.sửaToolStripMenuItem.Name = "sửaToolStripMenuItem";
+            this.sửaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.sửaToolStripMenuItem.Text = "Sửa";
+            this.sửaToolStripMenuItem.Click += new System.EventHandler(this.sửaToolStripMenuItem_Click);
             // 
-            // cbbMaSBDen
+            // xóaToolStripMenuItem
             // 
-            this.cbbMaSBDen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbMaSBDen.FormattingEnabled = true;
-            this.cbbMaSBDen.Location = new System.Drawing.Point(231, 26);
-            this.cbbMaSBDen.Name = "cbbMaSBDen";
-            this.cbbMaSBDen.Size = new System.Drawing.Size(92, 21);
-            this.cbbMaSBDen.TabIndex = 10;
-            this.cbbMaSBDen.DropDown += new System.EventHandler(this.cbbMaSBDen_DropDown);
-            this.cbbMaSBDen.TextChanged += new System.EventHandler(this.cbbMaSBDen_TextChanged);
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
-            // btnBanVe2
+            // làmMớiToolStripMenuItem
             // 
-            this.btnBanVe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBanVe2.Location = new System.Drawing.Point(828, 21);
-            this.btnBanVe2.Name = "btnBanVe2";
-            this.btnBanVe2.Size = new System.Drawing.Size(75, 27);
-            this.btnBanVe2.TabIndex = 10;
-            this.btnBanVe2.Text = "Bán vé";
-            this.btnBanVe2.UseVisualStyleBackColor = true;
-            // 
-            // cbbHHK
-            // 
-            this.cbbHHK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbbHHK.FormattingEnabled = true;
-            this.cbbHHK.Location = new System.Drawing.Point(329, 27);
-            this.cbbHHK.Name = "cbbHHK";
-            this.cbbHHK.Size = new System.Drawing.Size(86, 21);
-            this.cbbHHK.TabIndex = 11;
-            this.cbbHHK.DropDown += new System.EventHandler(this.comboBox1_DropDown);
-            this.cbbHHK.TextChanged += new System.EventHandler(this.cbbHHK_TextChanged);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(179, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(83, 21);
-            this.comboBox1.TabIndex = 29;
-            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown_1);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(268, 28);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(83, 21);
-            this.comboBox2.TabIndex = 30;
-            this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(355, 27);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(83, 21);
-            this.comboBox3.TabIndex = 31;
-            this.comboBox3.DropDown += new System.EventHandler(this.comboBox3_DropDown);
+            this.làmMớiToolStripMenuItem.Name = "làmMớiToolStripMenuItem";
+            this.làmMớiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.làmMớiToolStripMenuItem.Text = "Làm mới";
+            this.làmMớiToolStripMenuItem.Click += new System.EventHandler(this.làmMớiToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1031,6 +1069,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1116,6 +1155,10 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem sửaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem làmMớiToolStripMenuItem;
     }
 }
 

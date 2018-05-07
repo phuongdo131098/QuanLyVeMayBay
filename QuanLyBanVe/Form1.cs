@@ -81,7 +81,10 @@ namespace QuanLyBanVe
         private void btnSua_Click(object sender, EventArgs e)
         {
             pnlSua.Visible = true;
-            textBox16.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();            
+            textBox16.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            cbbMaSBDi.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            cbbMaSBDen.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            cbbHHK.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
             textBox12.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             textBox11.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
             textBox10.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
@@ -118,7 +121,9 @@ namespace QuanLyBanVe
         private void btnSaoChep_Click(object sender, EventArgs e)
         {
             textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            
+            comboBox1.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            comboBox2.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            comboBox3.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
             textBox5.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
             textBox6.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
             textBox7.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
@@ -434,6 +439,45 @@ namespace QuanLyBanVe
         private void comboBox3_DropDown(object sender, EventArgs e)
         {
             QuanLy.LoadHHK(comboBox3);
+        }
+
+        private void contextMenuStrip1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnSua_Click(sender, e);
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(MousePosition.X,MousePosition.Y);
+            }
+            
+        }
+          
+        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnXoa_Click(sender, e);
+        }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.SelectedRows.AsParallel();
+        }
+
+        private void làmMớiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuanLy.UpdateDataGridView(dataGridView1);
         }
     }
 }
