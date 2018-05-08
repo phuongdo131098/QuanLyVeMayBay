@@ -1,7 +1,0 @@
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\bin\Debug\DAO.dll
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\bin\Debug\DAO.pdb
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\bin\Debug\DTO.dll
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\bin\Debug\DTO.pdb
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\obj\Debug\DAO.dll
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\obj\Debug\DAO.pdb
