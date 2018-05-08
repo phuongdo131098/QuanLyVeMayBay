@@ -85,10 +85,10 @@ namespace QuanLyBanVe
             cbbMaSBDi.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
             cbbMaSBDen.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
             cbbHHK.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            textBox12.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            textBox11.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            textBox10.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
-            textBox9.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+
+            textBox11.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            textBox10.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+            textBox9.Text = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
             
             btnLuuThayDoi.Enabled = false;
         }
@@ -124,7 +124,7 @@ namespace QuanLyBanVe
             comboBox1.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
             comboBox2.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
             comboBox3.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            textBox5.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+           
             textBox6.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
             textBox7.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
             textBox8.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
@@ -167,7 +167,10 @@ namespace QuanLyBanVe
                         parameter = new SqlParameter("@MaHHK", comboBox3.Text);
                         command.Parameters.Add(parameter);
                     
-                        parameter = new SqlParameter("@ThoiGianBay", int.Parse(textBox5.Text));
+                        parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(dateTimePicker1.Value.ToString()));
+                        command.Parameters.Add(parameter);
+
+                        parameter = new SqlParameter("@ThoiGianDen", Convert.ToDateTime(dateTimePicker2.Value.ToString()));
                         command.Parameters.Add(parameter);
 
                         parameter = new SqlParameter("@SoGheHang1", int.Parse(textBox6.Text));
@@ -183,7 +186,7 @@ namespace QuanLyBanVe
                     }
                     QuanLy.UpdateDataGridView(dataGridView1);
                 }
-                catch (Exception) when (textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "")
+                catch (Exception) when (textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "")
                 {
                     MessageBox.Show("Vui lòng không bỏ trống các trường có ký hiệu (*).");
                 }
@@ -225,7 +228,10 @@ namespace QuanLyBanVe
                     parameter = new SqlParameter("@MaHHK", cbbHHK.Text);
                     command.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@ThoiGianBay", int.Parse(textBox12.Text));
+                    parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(dateTimePicker1.Value.ToString()));
+                    command.Parameters.Add(parameter);
+
+                    parameter = new SqlParameter("@ThoiGianDen", Convert.ToDateTime(dateTimePicker2.Value.ToString()));
                     command.Parameters.Add(parameter);
 
                     parameter = new SqlParameter("@SoGheHang1", int.Parse(textBox11.Text));
@@ -246,12 +252,12 @@ namespace QuanLyBanVe
                 cbbMaSBDi.Text = null;
                 cbbHHK.Text = null;
                 textBox16.Clear();           
-                textBox12.Clear();
+
                 textBox11.Clear();
                 textBox10.Clear();
                 textBox9.Clear();
             }
-            catch (Exception) when (textBox12.Text == "" || textBox11.Text == "" || textBox10.Text == "" || textBox9.Text == "")
+            catch (Exception) when (textBox11.Text == "" || textBox10.Text == "" || textBox9.Text == "")
             {
                 MessageBox.Show("Vui lòng không bỏ trống các trường có ký hiệu (*).");
             }
@@ -264,7 +270,7 @@ namespace QuanLyBanVe
             cbbMaSBDi.Text = null;
             cbbHHK.Text = null;
             textBox16.Clear();
-            textBox12.Clear();
+
             textBox11.Clear();
             textBox10.Clear();
             textBox9.Clear();
@@ -348,7 +354,7 @@ namespace QuanLyBanVe
             comboBox1.Text = null;
             comboBox2.Text = null;
             comboBox3.Text = null;
-            textBox5.Clear();
+
             textBox6.Clear();
             textBox7.Clear();
             textBox8.Clear();
@@ -360,7 +366,7 @@ namespace QuanLyBanVe
             cbbMaSBDen.Text = null;
             cbbMaSBDi.Text = null;
             cbbHHK.Text = null;
-            textBox12.Clear();
+
             textBox11.Clear();
             textBox10.Clear();
             textBox9.Clear();
@@ -440,12 +446,6 @@ namespace QuanLyBanVe
         {
             QuanLy.LoadHHK(comboBox3);
         }
-
-        private void contextMenuStrip1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnSua_Click(sender, e);
@@ -476,6 +476,28 @@ namespace QuanLyBanVe
         private void làmMớiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuanLy.UpdateDataGridView(dataGridView1);
+        }
+
+        private void btnBanVe_Click(object sender, EventArgs e)
+        {
+            BanVe formBanVe = new BanVe();
+            formBanVe.ShowDialog();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            btnLuuThayDoi.Enabled = true;
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            btnLuuThayDoi.Enabled = true;
+        }
+
+        private void btnBanVe2_Click(object sender, EventArgs e)
+        {
+            BanVe formBanVe = new BanVe();
+            formBanVe.ShowDialog();
         }
     }
 }

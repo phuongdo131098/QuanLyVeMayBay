@@ -25,7 +25,7 @@ namespace QuanLyBanVe
                 adapter.Fill(datb);
                 dataGridView1.DataSource = datb;
             }
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.ClearSelection();
         }
 

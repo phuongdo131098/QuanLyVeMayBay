@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.grpBanVe = new System.Windows.Forms.GroupBox();
             this.dgvVe = new System.Windows.Forms.DataGridView();
+            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cboHangVe = new System.Windows.Forms.ComboBox();
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.btnHuyBo = new System.Windows.Forms.Button();
@@ -39,7 +42,6 @@
             this.btnKiemTra = new System.Windows.Forms.Button();
             this.lblHoTen = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grpBanVe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVe)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +49,7 @@
             // txtCMND
             // 
             this.txtCMND.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtCMND.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtCMND.Location = new System.Drawing.Point(318, 380);
             this.txtCMND.MaximumSize = new System.Drawing.Size(1000, 800);
             this.txtCMND.Name = "txtCMND";
@@ -63,7 +66,7 @@
             this.grpBanVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBanVe.Location = new System.Drawing.Point(3, 4);
             this.grpBanVe.Name = "grpBanVe";
-            this.grpBanVe.Size = new System.Drawing.Size(582, 357);
+            this.grpBanVe.Size = new System.Drawing.Size(861, 357);
             this.grpBanVe.TabIndex = 1;
             this.grpBanVe.TabStop = false;
             this.grpBanVe.Text = "Bán vé";
@@ -74,10 +77,11 @@
             this.dgvVe.AllowUserToDeleteRows = false;
             this.dgvVe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvVe.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvVe.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dgvVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -86,11 +90,33 @@
             this.dgvVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chonMua});
-            this.dgvVe.GridColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVe.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVe.Location = new System.Drawing.Point(6, 46);
             this.dgvVe.Name = "dgvVe";
-            this.dgvVe.Size = new System.Drawing.Size(570, 305);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvVe.Size = new System.Drawing.Size(849, 305);
             this.dgvVe.TabIndex = 1;
+            // 
+            // chonMua
+            // 
+            this.chonMua.Frozen = true;
+            this.chonMua.HeaderText = "ChonMua";
+            this.chonMua.Name = "chonMua";
+            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // cboHangVe
             // 
@@ -109,7 +135,7 @@
             // btnXacNhan
             // 
             this.btnXacNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXacNhan.Location = new System.Drawing.Point(356, 419);
+            this.btnXacNhan.Location = new System.Drawing.Point(635, 421);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(108, 32);
             this.btnXacNhan.TabIndex = 2;
@@ -120,7 +146,7 @@
             // btnHuyBo
             // 
             this.btnHuyBo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHuyBo.Location = new System.Drawing.Point(471, 419);
+            this.btnHuyBo.Location = new System.Drawing.Point(750, 421);
             this.btnHuyBo.Name = "btnHuyBo";
             this.btnHuyBo.Size = new System.Drawing.Size(108, 32);
             this.btnHuyBo.TabIndex = 3;
@@ -163,18 +189,11 @@
             this.txtHoTen.Size = new System.Drawing.Size(261, 20);
             this.txtHoTen.TabIndex = 7;
             // 
-            // chonMua
-            // 
-            this.chonMua.Frozen = true;
-            this.chonMua.HeaderText = "ChonMua";
-            this.chonMua.Name = "chonMua";
-            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // BanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 463);
+            this.ClientSize = new System.Drawing.Size(870, 465);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.lblHoTen);
             this.Controls.Add(this.btnKiemTra);
