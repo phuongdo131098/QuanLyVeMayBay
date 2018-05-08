@@ -1,0 +1,9 @@
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\bin\Debug\BUS.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\bin\Debug\BUS.pdb
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\bin\Debug\DAO.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\bin\Debug\DTO.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\bin\Debug\DAO.pdb
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\bin\Debug\DTO.pdb
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\obj\Debug\BUS.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\BUS\obj\Debug\BUS.pdb
