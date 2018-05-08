@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLVeMayBayModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CHUYENBAYs">
+      <EntityTypeMapping TypeName="QLVeMayBayModel.CHUYENBAY">
+        <MappingFragment StoreEntitySet="CHUYENBAY">
+          <ScalarProperty Name="MACB" ColumnName="MACB" />
+          <ScalarProperty Name="MASBDI" ColumnName="MASBDI" />
+          <ScalarProperty Name="MASBDEN" ColumnName="MASBDEN" />
+          <ScalarProperty Name="MAHHK" ColumnName="MAHHK" />
+          <ScalarProperty Name="THOIGIANBAY" ColumnName="THOIGIANBAY" />
+          <ScalarProperty Name="SOGHEHANG1" ColumnName="SOGHEHANG1" />
+          <ScalarProperty Name="SOGHEHANG2" ColumnName="SOGHEHANG2" />
+          <ScalarProperty Name="GIAVE" ColumnName="GIAVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
