@@ -13,19 +13,22 @@ namespace QuanLyBanVe
 {
     public partial class BanVe : Form
     {
-        public BanVe()
+        private string maCB;
+
+        public BanVe(string MaCB)
         {
             InitializeComponent();
-            
+            this.maCB = MaCB;
         }
 
         private DataTable getVe()
         {
-            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn);
+            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu);
             con.Open();
 
             SqlCommand comm = new SqlCommand("LietKeVe", con);
             comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@MaCB", this.maCB);
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = comm;
@@ -34,16 +37,20 @@ namespace QuanLyBanVe
             return datb;            
         }
 
-        private DataTable getVe(string MaHV)
+        private DataTable getVe(string TenHV)
         {
-            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn);
+            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu);
             con.Open();
 
             SqlCommand comm = new SqlCommand("ChonHangVe", con);
             comm.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter para = new SqlParameter("@TenHangVe", MaHV);
+            SqlParameter para = new SqlParameter("@TenHangVe", TenHV);
             comm.Parameters.Add(para);
+
+            para = new SqlParameter("@MaCB", maCB);
+            comm.Parameters.Add(para);
+
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = comm;
 
@@ -67,13 +74,13 @@ namespace QuanLyBanVe
             {
                 if (cboHangVe.SelectedIndex == 0)
                 {
-                    dgvVe.DataSource = getVe(cboHangVe.Text);
+                    dgvVe.DataSource = getVe("Hạng 1");
 
                     int demVeDaBan = 0;
 
                     for (int i = 0; i < dgvVe.Rows.Count; ++i)
                     {
-                        if (dgvVe["TÌNH TRẠNG", i].Value.ToString() == "TT001")
+                        if (dgvVe["TÌNH TRẠNG", i].Value.ToString() == "Còn trống")
                             break;
                         else
                             demVeDaBan++;
@@ -82,18 +89,18 @@ namespace QuanLyBanVe
                     if (demVeDaBan == dgvVe.Rows.Count)
                     {
                         MessageBox.Show("Tất cả các vé hạng 1 đã được bán hết.", "Thông báo", MessageBoxButtons.OK);
-                        dgvVe.DataSource = getVe(cboHangVe.Text);
+                        dgvVe.DataSource = getVe();
                     }
                 }
                 else if (cboHangVe.SelectedIndex == 1)
                 {
-                    dgvVe.DataSource = getVe("HV002");
+                    dgvVe.DataSource = getVe("Hạng 2");
 
                     int demVeDaBan = 0;
 
                     for (int i = 0; i < dgvVe.Rows.Count; i++)
                     {
-                        if (dgvVe["TÌNH TRẠNG", i].Value.ToString() == "TT001")
+                        if (dgvVe["TÌNH TRẠNG", i].Value.ToString() == "Còn trống")
                             demVeDaBan++;
                         else
                             break;
@@ -102,7 +109,7 @@ namespace QuanLyBanVe
                     if (demVeDaBan == dgvVe.Rows.Count)
                     {
                         MessageBox.Show("Tất cả các vé hạng 2 đã được bán hết.", "Thông báo", MessageBoxButtons.OK);
-                        dgvVe.DataSource = getVe(cboHangVe.Text);
+                        dgvVe.DataSource = getVe();
                     }
                 }
             }
@@ -130,8 +137,9 @@ namespace QuanLyBanVe
                 if (dialogResult == DialogResult.Yes)                
                 {
 
-                    using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
-                    { con.Open();
+                    using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+                    {
+                        con.Open();
                         string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}'", txtCMND.Text);
 
                         SqlDataAdapter da = new SqlDataAdapter(sql, con);
@@ -150,8 +158,7 @@ namespace QuanLyBanVe
                                 // Kiểm tra vé đã bán hay chưa
                                 if (dgvVe["MATT", i].Value.ToString() == "TT001")
                                 {
-                                    MessageBox.Show("Vé này đã được bán. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
-                                    
+                                    MessageBox.Show("Vé này đã được bán. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);                                    
                                 }
                                 else
                                 {
@@ -195,7 +202,7 @@ namespace QuanLyBanVe
 
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 con.Open();
                 string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}' and HoTen = N'{1}'", txtCMND.Text, txtHoTen.Text);
@@ -218,5 +225,6 @@ namespace QuanLyBanVe
                 con.Close();
             }
         }
+
     }
 }

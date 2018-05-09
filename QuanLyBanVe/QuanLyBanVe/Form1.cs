@@ -98,7 +98,7 @@ namespace QuanLyBanVe
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa vĩnh viễn (các) bản ghi này?", "Xóa bản ghi", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
                 {
                     connection.Open();
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
@@ -147,7 +147,7 @@ namespace QuanLyBanVe
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
                     {
                         connection.Open();
 
@@ -208,7 +208,7 @@ namespace QuanLyBanVe
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
                 {
                     connection.Open();
 
@@ -480,7 +480,8 @@ namespace QuanLyBanVe
 
         private void btnBanVe_Click(object sender, EventArgs e)
         {
-            BanVe formBanVe = new BanVe();
+            string maCB = getMaCB(dataGridView1);
+            BanVe formBanVe = new BanVe(maCB);
             formBanVe.ShowDialog();
         }
 
@@ -496,8 +497,14 @@ namespace QuanLyBanVe
 
         private void btnBanVe2_Click(object sender, EventArgs e)
         {
-            BanVe formBanVe = new BanVe();
+            string maCB = getMaCB(dataGridView1);
+            BanVe formBanVe = new BanVe(maCB);
             formBanVe.ShowDialog();
+        }
+
+        private string getMaCB(DataGridView dataGridView1)
+        {
+            return dataGridView1.CurrentRow.Cells[0].Value.ToString();
         }
     }
 }
