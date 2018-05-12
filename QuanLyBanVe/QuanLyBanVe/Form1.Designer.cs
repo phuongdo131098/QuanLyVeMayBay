@@ -63,6 +63,9 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.pnlSua = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbbHHK = new System.Windows.Forms.ComboBox();
             this.cbbMaSBDen = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -83,6 +86,10 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.pnlThem = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label25 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -109,13 +116,11 @@
             this.sửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.làmMớiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.label25 = new System.Windows.Forms.Label();
+            this.bánVéToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.chiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bánVéToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.làmMớiToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -130,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -156,13 +162,13 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -217,7 +223,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(910, 466);
+            this.tabPage3.Size = new System.Drawing.Size(1035, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cập nhật vé";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -299,7 +305,7 @@
             this.btnBanVe2.Location = new System.Drawing.Point(953, 21);
             this.btnBanVe2.Name = "btnBanVe2";
             this.btnBanVe2.Size = new System.Drawing.Size(75, 27);
-            this.btnBanVe2.TabIndex = 10;
+            this.btnBanVe2.TabIndex = 4;
             this.btnBanVe2.Text = "Bán vé";
             this.btnBanVe2.UseVisualStyleBackColor = true;
             this.btnBanVe2.Click += new System.EventHandler(this.btnBanVe2_Click);
@@ -337,7 +343,7 @@
             this.cbbNoiDen.Location = new System.Drawing.Point(139, 26);
             this.cbbNoiDen.Name = "cbbNoiDen";
             this.cbbNoiDen.Size = new System.Drawing.Size(99, 23);
-            this.cbbNoiDen.TabIndex = 6;
+            this.cbbNoiDen.TabIndex = 1;
             this.cbbNoiDen.DropDown += new System.EventHandler(this.cbbNoiDen_DropDown);
             // 
             // cbbNoiDi
@@ -347,7 +353,7 @@
             this.cbbNoiDi.Location = new System.Drawing.Point(32, 27);
             this.cbbNoiDi.Name = "cbbNoiDi";
             this.cbbNoiDi.Size = new System.Drawing.Size(100, 23);
-            this.cbbNoiDi.TabIndex = 5;
+            this.cbbNoiDi.TabIndex = 0;
             this.cbbNoiDi.DropDown += new System.EventHandler(this.cbbNoiDi_DropDown);
             // 
             // btnTraCuu
@@ -355,7 +361,7 @@
             this.btnTraCuu.Location = new System.Drawing.Point(453, 26);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(69, 23);
-            this.btnTraCuu.TabIndex = 4;
+            this.btnTraCuu.TabIndex = 3;
             this.btnTraCuu.Text = "Tìm";
             this.btnTraCuu.UseVisualStyleBackColor = true;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
@@ -363,11 +369,11 @@
             // dateTraCuu
             // 
             this.dateTraCuu.Location = new System.Drawing.Point(244, 25);
-            this.dateTraCuu.MinDate = new System.DateTime(2018, 5, 7, 8, 22, 14, 298);
+            this.dateTraCuu.MinDate = System.DateTime.Now;
             this.dateTraCuu.Name = "dateTraCuu";
             this.dateTraCuu.Size = new System.Drawing.Size(200, 23);
-            this.dateTraCuu.TabIndex = 3;
-            this.dateTraCuu.Value = new System.DateTime(2018, 5, 7, 8, 22, 14, 299);
+            this.dateTraCuu.TabIndex = 2;
+            this.dateTraCuu.Value = System.DateTime.Now;
             // 
             // dataGridView2
             // 
@@ -380,9 +386,10 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(854, 320);
-            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.Size = new System.Drawing.Size(1022, 320);
+            this.dataGridView2.TabIndex = 6;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // tabPage1
             // 
@@ -408,7 +415,7 @@
             this.btnClearSelection.Location = new System.Drawing.Point(351, 7);
             this.btnClearSelection.Name = "btnClearSelection";
             this.btnClearSelection.Size = new System.Drawing.Size(100, 27);
-            this.btnClearSelection.TabIndex = 7;
+            this.btnClearSelection.TabIndex = 4;
             this.btnClearSelection.Text = "Bỏ chọn tất cả";
             this.btnClearSelection.UseVisualStyleBackColor = true;
             this.btnClearSelection.Click += new System.EventHandler(this.btnClearSelection_Click);
@@ -418,7 +425,7 @@
             this.btnSelectAll.Location = new System.Drawing.Point(264, 7);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(83, 27);
-            this.btnSelectAll.TabIndex = 6;
+            this.btnSelectAll.TabIndex = 3;
             this.btnSelectAll.Text = "Chọn tất cả";
             this.btnSelectAll.UseVisualStyleBackColor = true;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
@@ -428,7 +435,7 @@
             this.btnSaoChep.Location = new System.Drawing.Point(162, 7);
             this.btnSaoChep.Name = "btnSaoChep";
             this.btnSaoChep.Size = new System.Drawing.Size(75, 27);
-            this.btnSaoChep.TabIndex = 8;
+            this.btnSaoChep.TabIndex = 2;
             this.btnSaoChep.Text = "Sao chép";
             this.btnSaoChep.UseVisualStyleBackColor = true;
             this.btnSaoChep.Click += new System.EventHandler(this.btnSaoChep_Click);
@@ -438,7 +445,7 @@
             this.btnSua.Location = new System.Drawing.Point(4, 7);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 27);
-            this.btnSua.TabIndex = 2;
+            this.btnSua.TabIndex = 0;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -448,7 +455,7 @@
             this.btnXoa.Location = new System.Drawing.Point(83, 7);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 27);
-            this.btnXoa.TabIndex = 3;
+            this.btnXoa.TabIndex = 1;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -486,6 +493,37 @@
             this.pnlSua.Size = new System.Drawing.Size(1023, 62);
             this.pnlSua.TabIndex = 6;
             this.pnlSua.Visible = false;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(532, 12);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(85, 13);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "ThoiGianDen(*)";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(531, 26);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(93, 22);
+            this.dateTimePicker2.TabIndex = 31;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dateTimePicker2.MinDate = System.DateTime.Now;
+            this.dateTimePicker2.Value = System.DateTime.Now;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "mm/dd/yy hh:mm";
+            this.dateTimePicker1.Location = new System.Drawing.Point(423, 27);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(91, 22);
+            this.dateTimePicker1.TabIndex = 30;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.MinDate = System.DateTime.Now; 
+            this.dateTimePicker1.Value= System.DateTime.Now;
             // 
             // cbbHHK
             // 
@@ -727,7 +765,45 @@
             this.pnlThem.Location = new System.Drawing.Point(5, 384);
             this.pnlThem.Name = "pnlThem";
             this.pnlThem.Size = new System.Drawing.Size(1023, 76);
-            this.pnlThem.TabIndex = 5;
+            this.pnlThem.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(552, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 13);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "ThoiGianDen(*)";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Location = new System.Drawing.Point(551, 27);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(93, 22);
+            this.dateTimePicker3.TabIndex = 13;
+            this.dateTimePicker3.MinDate = System.DateTime.Now;
+            this.dateTimePicker3.Value = System.DateTime.Now;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Location = new System.Drawing.Point(443, 27);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(91, 22);
+            this.dateTimePicker4.TabIndex = 12;
+            this.dateTimePicker4.MinDate = System.DateTime.Now;
+            this.dateTimePicker4.Value= System.DateTime.Now;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(430, 12);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(115, 13);
+            this.label25.TabIndex = 32;
+            this.label25.Text = "ThoiGianKhoiHanh(*)";
             // 
             // comboBox3
             // 
@@ -736,7 +812,7 @@
             this.comboBox3.Location = new System.Drawing.Point(353, 27);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(83, 21);
-            this.comboBox3.TabIndex = 31;
+            this.comboBox3.TabIndex = 11;
             this.comboBox3.DropDown += new System.EventHandler(this.comboBox3_DropDown);
             // 
             // comboBox2
@@ -746,7 +822,7 @@
             this.comboBox2.Location = new System.Drawing.Point(266, 28);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(83, 21);
-            this.comboBox2.TabIndex = 30;
+            this.comboBox2.TabIndex = 10;
             this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
             // 
             // comboBox1
@@ -756,7 +832,7 @@
             this.comboBox1.Location = new System.Drawing.Point(177, 28);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(83, 21);
-            this.comboBox1.TabIndex = 29;
+            this.comboBox1.TabIndex = 9;
             this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown_1);
             // 
             // pictureBox2
@@ -789,7 +865,7 @@
             this.btnLuuMoi.Location = new System.Drawing.Point(942, 25);
             this.btnLuuMoi.Name = "btnLuuMoi";
             this.btnLuuMoi.Size = new System.Drawing.Size(75, 25);
-            this.btnLuuMoi.TabIndex = 26;
+            this.btnLuuMoi.TabIndex = 17;
             this.btnLuuMoi.Text = "Lưu";
             this.btnLuuMoi.UseVisualStyleBackColor = true;
             this.btnLuuMoi.Click += new System.EventHandler(this.btnLuuMoi_Click);
@@ -802,7 +878,7 @@
             this.textBox8.MaxLength = 12;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(83, 23);
-            this.textBox8.TabIndex = 25;
+            this.textBox8.TabIndex = 16;
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
@@ -814,7 +890,7 @@
             this.textBox7.MaxLength = 3;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(83, 23);
-            this.textBox7.TabIndex = 24;
+            this.textBox7.TabIndex = 15;
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
@@ -826,7 +902,7 @@
             this.textBox6.MaxLength = 3;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(85, 23);
-            this.textBox6.TabIndex = 23;
+            this.textBox6.TabIndex = 14;
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
@@ -838,7 +914,7 @@
             this.textBox1.MaxLength = 5;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(60, 23);
-            this.textBox1.TabIndex = 18;
+            this.textBox1.TabIndex = 8;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label13
@@ -949,7 +1025,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1024, 421);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -990,9 +1066,10 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sửaToolStripMenuItem,
             this.xóaToolStripMenuItem,
-            this.làmMớiToolStripMenuItem});
+            this.làmMớiToolStripMenuItem,
+            this.bánVéToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(122, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(122, 92);
             // 
             // sửaToolStripMenuItem
             // 
@@ -1015,66 +1092,42 @@
             this.làmMớiToolStripMenuItem.Text = "Làm mới";
             this.làmMớiToolStripMenuItem.Click += new System.EventHandler(this.làmMớiToolStripMenuItem_Click);
             // 
-            // dateTimePicker1
+            // bánVéToolStripMenuItem
             // 
-            this.dateTimePicker1.CustomFormat = "mm/dd/yy hh:mm";
-            this.dateTimePicker1.Location = new System.Drawing.Point(423, 27);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(91, 22);
-            this.dateTimePicker1.TabIndex = 30;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.bánVéToolStripMenuItem.Name = "bánVéToolStripMenuItem";
+            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.bánVéToolStripMenuItem.Text = "Bán vé";
+            this.bánVéToolStripMenuItem.Click += new System.EventHandler(this.bánVéToolStripMenuItem_Click);
             // 
-            // dateTimePicker2
+            // contextMenuStrip2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(531, 26);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(93, 22);
-            this.dateTimePicker2.TabIndex = 31;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chiTiếtToolStripMenuItem,
+            this.bánVéToolStripMenuItem1,
+            this.làmMớiToolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(122, 70);
             // 
-            // label24
+            // chiTiếtToolStripMenuItem
             // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(532, 12);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(85, 13);
-            this.label24.TabIndex = 15;
-            this.label24.Text = "ThoiGianDen(*)";
+            this.chiTiếtToolStripMenuItem.Name = "chiTiếtToolStripMenuItem";
+            this.chiTiếtToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.chiTiếtToolStripMenuItem.Text = "Chi tiết";
+            this.chiTiếtToolStripMenuItem.Click += new System.EventHandler(this.chiTiếtToolStripMenuItem_Click);
             // 
-            // label10
+            // bánVéToolStripMenuItem1
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(552, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(85, 13);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "ThoiGianDen(*)";
+            this.bánVéToolStripMenuItem1.Name = "bánVéToolStripMenuItem1";
+            this.bánVéToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.bánVéToolStripMenuItem1.Text = "Bán vé";
+            this.bánVéToolStripMenuItem1.Click += new System.EventHandler(this.bánVéToolStripMenuItem1_Click);
             // 
-            // dateTimePicker3
+            // làmMớiToolStripMenuItem1
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(551, 27);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(93, 22);
-            this.dateTimePicker3.TabIndex = 35;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(443, 27);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(91, 22);
-            this.dateTimePicker4.TabIndex = 34;
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(430, 12);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(115, 13);
-            this.label25.TabIndex = 32;
-            this.label25.Text = "ThoiGianKhoiHanh(*)";
+            this.làmMớiToolStripMenuItem1.Name = "làmMớiToolStripMenuItem1";
+            this.làmMớiToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.làmMớiToolStripMenuItem1.Text = "Làm mới";
+            this.làmMớiToolStripMenuItem1.Click += new System.EventHandler(this.làmMớiToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -1109,6 +1162,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1202,6 +1256,11 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ToolStripMenuItem bánVéToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem chiTiếtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bánVéToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem làmMớiToolStripMenuItem1;
     }
 }
 

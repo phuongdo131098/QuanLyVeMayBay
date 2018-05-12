@@ -98,7 +98,7 @@ namespace QuanLyBanVe
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa vĩnh viễn (các) bản ghi này?", "Xóa bản ghi", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                 {
                     connection.Open();
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
@@ -147,7 +147,7 @@ namespace QuanLyBanVe
             {
                 try
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                     {
                         connection.Open();
 
@@ -208,7 +208,7 @@ namespace QuanLyBanVe
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                 {
                     connection.Open();
 
@@ -458,12 +458,9 @@ namespace QuanLyBanVe
                 DataGridView.HitTestInfo hti = ((DataGridView)sender).HitTest(e.X, e.Y);
                 if (hti.Type == DataGridViewHitTestType.Cell)
                 {
-                    if (!dataGridView1.Rows[hti.RowIndex].Selected)
-                    {
-                        contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
-                        dataGridView1.ClearSelection();
-                        dataGridView1.Rows[hti.RowIndex].Selected = true;
-                    }
+                    contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[hti.RowIndex].Selected = true;
                 }
             }
             pictureBox1_Click(sender, e);
@@ -505,6 +502,45 @@ namespace QuanLyBanVe
         private string getMaCB(DataGridView dataGridView1)
         {
             return dataGridView1.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void bánVéToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnBanVe_Click(sender, e);
+        }
+
+        private void bánVéToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            btnBanVe2_Click(sender, e);
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView.HitTestInfo hti = ((DataGridView)sender).HitTest(e.X, e.Y);
+                if (hti.Type == DataGridViewHitTestType.Cell)
+                {
+                    contextMenuStrip2.Show(MousePosition.X, MousePosition.Y);
+                    dataGridView2.ClearSelection();
+                    dataGridView2.Rows[hti.RowIndex].Selected = true;
+                }
+            }
+        }
+
+        private void chiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void làmMớiToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            btnTraCuu_Click(sender, e);
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

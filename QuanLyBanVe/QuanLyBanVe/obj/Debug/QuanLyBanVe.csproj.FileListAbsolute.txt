@@ -37,3 +37,17 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.Cache
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csprojResolveAssemblyReference.cache
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BanVe.resources
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCao.resources
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.DangNhap.resources
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Form1.resources
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.cache
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.exe
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.pdb
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.exe.config
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.exe
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.pdb

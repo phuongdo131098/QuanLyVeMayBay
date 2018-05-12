@@ -23,7 +23,7 @@ namespace QuanLyBanVe
 
         private DataTable getVe()
         {
-            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu);
+            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn);
             con.Open();
 
             SqlCommand comm = new SqlCommand("LietKeVe", con);
@@ -34,12 +34,14 @@ namespace QuanLyBanVe
             adapter.SelectCommand = comm;
             DataTable datb = new DataTable();
             adapter.Fill(datb);
-            return datb;            
+
+            return datb;
+       
         }
 
         private DataTable getVe(string TenHV)
         {
-            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu);
+            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn);
             con.Open();
 
             SqlCommand comm = new SqlCommand("ChonHangVe", con);
@@ -137,7 +139,7 @@ namespace QuanLyBanVe
                 if (dialogResult == DialogResult.Yes)                
                 {
 
-                    using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+                    using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                     {
                         con.Open();
                         string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}'", txtCMND.Text);
@@ -156,7 +158,7 @@ namespace QuanLyBanVe
                             if (dgvVe[0, i].Selected)
                             {
                                 // Kiểm tra vé đã bán hay chưa
-                                if (dgvVe["MATT", i].Value.ToString() == "TT001")
+                                if (dgvVe["Tình Trạng", i].Value.ToString() == "Đã bán")
                                 {
                                     MessageBox.Show("Vé này đã được bán. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);                                    
                                 }
@@ -202,7 +204,7 @@ namespace QuanLyBanVe
 
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 con.Open();
                 string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}' and HoTen = N'{1}'", txtCMND.Text, txtHoTen.Text);
@@ -226,5 +228,9 @@ namespace QuanLyBanVe
             }
         }
 
+        private void dgvVe_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
