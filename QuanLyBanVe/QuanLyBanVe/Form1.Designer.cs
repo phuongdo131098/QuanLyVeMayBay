@@ -121,6 +121,8 @@
             this.chiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bánVéToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.làmMớiToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.báoCáoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.báoCáoNămToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -150,7 +152,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(197, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(317, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -167,7 +169,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -186,10 +188,12 @@
             // 
             // báoCáoToolStripMenuItem
             // 
+            this.báoCáoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.báoCáoToolStripMenuItem1,
+            this.báoCáoNămToolStripMenuItem});
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo...";
-            this.báoCáoToolStripMenuItem.Click += new System.EventHandler(this.báoCáoToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -369,15 +373,16 @@
             // dateTraCuu
             // 
             this.dateTraCuu.Location = new System.Drawing.Point(244, 25);
-            this.dateTraCuu.MinDate = System.DateTime.Now;
+            this.dateTraCuu.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 349);
             this.dateTraCuu.Name = "dateTraCuu";
             this.dateTraCuu.Size = new System.Drawing.Size(200, 23);
             this.dateTraCuu.TabIndex = 2;
-            this.dateTraCuu.Value = System.DateTime.Now;
+            this.dateTraCuu.Value = new System.DateTime(2018, 5, 14, 10, 11, 0, 350);
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -507,23 +512,23 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(531, 26);
+            this.dateTimePicker2.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 426);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(93, 22);
             this.dateTimePicker2.TabIndex = 31;
+            this.dateTimePicker2.Value = new System.DateTime(2018, 5, 14, 10, 11, 0, 426);
             this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
-            this.dateTimePicker2.MinDate = System.DateTime.Now;
-            this.dateTimePicker2.Value = System.DateTime.Now;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "mm/dd/yy hh:mm";
             this.dateTimePicker1.Location = new System.Drawing.Point(423, 27);
+            this.dateTimePicker1.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 432);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(91, 22);
             this.dateTimePicker1.TabIndex = 30;
+            this.dateTimePicker1.Value = new System.DateTime(2018, 5, 14, 10, 11, 0, 432);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            this.dateTimePicker1.MinDate = System.DateTime.Now; 
-            this.dateTimePicker1.Value= System.DateTime.Now;
             // 
             // cbbHHK
             // 
@@ -780,20 +785,20 @@
             // dateTimePicker3
             // 
             this.dateTimePicker3.Location = new System.Drawing.Point(551, 27);
+            this.dateTimePicker3.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 986);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(93, 22);
             this.dateTimePicker3.TabIndex = 13;
-            this.dateTimePicker3.MinDate = System.DateTime.Now;
-            this.dateTimePicker3.Value = System.DateTime.Now;
+            this.dateTimePicker3.Value = new System.DateTime(2018, 5, 14, 10, 11, 0, 986);
             // 
             // dateTimePicker4
             // 
             this.dateTimePicker4.Location = new System.Drawing.Point(443, 27);
+            this.dateTimePicker4.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 989);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(91, 22);
             this.dateTimePicker4.TabIndex = 12;
-            this.dateTimePicker4.MinDate = System.DateTime.Now;
-            this.dateTimePicker4.Value= System.DateTime.Now;
+            this.dateTimePicker4.Value = new System.DateTime(2018, 5, 14, 10, 11, 0, 989);
             // 
             // label25
             // 
@@ -1013,6 +1018,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
@@ -1128,6 +1134,20 @@
             this.làmMớiToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.làmMớiToolStripMenuItem1.Text = "Làm mới";
             this.làmMớiToolStripMenuItem1.Click += new System.EventHandler(this.làmMớiToolStripMenuItem1_Click);
+            // 
+            // báoCáoToolStripMenuItem1
+            // 
+            this.báoCáoToolStripMenuItem1.Name = "báoCáoToolStripMenuItem1";
+            this.báoCáoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.báoCáoToolStripMenuItem1.Text = "Báo cáo chuyến bay";
+            this.báoCáoToolStripMenuItem1.Click += new System.EventHandler(this.báoCáoToolStripMenuItem1_Click);
+            // 
+            // báoCáoNămToolStripMenuItem
+            // 
+            this.báoCáoNămToolStripMenuItem.Name = "báoCáoNămToolStripMenuItem";
+            this.báoCáoNămToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.báoCáoNămToolStripMenuItem.Text = "Báo cáo năm";
+            this.báoCáoNămToolStripMenuItem.Click += new System.EventHandler(this.báoCáoNămToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -1261,6 +1281,8 @@
         private System.Windows.Forms.ToolStripMenuItem chiTiếtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bánVéToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem làmMớiToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem báoCáoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem báoCáoNămToolStripMenuItem;
     }
 }
 

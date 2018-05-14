@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.grpBanVe = new System.Windows.Forms.GroupBox();
             this.dgvVe = new System.Windows.Forms.DataGridView();
-            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cboHangVe = new System.Windows.Forms.ComboBox();
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.btnHuyBo = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.btnKiemTra = new System.Windows.Forms.Button();
             this.lblHoTen = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.grpBanVe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVe)).BeginInit();
             this.SuspendLayout();
@@ -90,33 +92,28 @@
             this.dgvVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chonMua});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVe.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvVe.Location = new System.Drawing.Point(6, 46);
-            this.dgvVe.Name = "dgvVe";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVe.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVe.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvVe.Location = new System.Drawing.Point(6, 46);
+            this.dgvVe.Name = "dgvVe";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVe.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVe.Size = new System.Drawing.Size(849, 305);
             this.dgvVe.TabIndex = 1;
-            // 
-            // chonMua
-            // 
-            this.chonMua.Frozen = true;
-            this.chonMua.HeaderText = "ChonMua";
-            this.chonMua.Name = "chonMua";
-            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // cboHangVe
             // 
@@ -188,6 +185,17 @@
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(261, 20);
             this.txtHoTen.TabIndex = 2;
+            // 
+            // chonMua
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.NullValue = false;
+            this.chonMua.DefaultCellStyle = dataGridViewCellStyle2;
+            this.chonMua.Frozen = true;
+            this.chonMua.HeaderText = "ChonMua";
+            this.chonMua.Name = "chonMua";
+            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // BanVe
             // 

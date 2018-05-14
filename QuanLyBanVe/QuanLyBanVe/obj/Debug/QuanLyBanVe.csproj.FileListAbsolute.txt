@@ -51,3 +51,4 @@ D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBa
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.exe.config
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.exe
 D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.pdb
+D:\Học tập\NM CNPM\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCaoNam.resources

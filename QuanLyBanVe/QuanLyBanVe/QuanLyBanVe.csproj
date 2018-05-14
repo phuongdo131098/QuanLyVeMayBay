@@ -51,6 +51,12 @@
     <Compile Include="BanVe.Designer.cs">
       <DependentUpon>BanVe.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaoCaoNam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoNam.Designer.cs">
+      <DependentUpon>BaoCaoNam.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="BanVe.resx">
       <DependentUpon>BanVe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCaoNam.resx">
+      <DependentUpon>BaoCaoNam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>

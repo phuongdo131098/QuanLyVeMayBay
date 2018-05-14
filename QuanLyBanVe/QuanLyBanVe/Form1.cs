@@ -28,12 +28,6 @@ namespace QuanLyBanVe
             this.Close();
         }
 
-        private void báoCáoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form baoCao = new BaoCao();
-            baoCao.ShowDialog();
-        }
-
         private void llbTaoThanhVien_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TaoThanhVien taoThanhVien = new TaoThanhVien();
@@ -541,6 +535,18 @@ namespace QuanLyBanVe
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void báoCáoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BaoCao formBaoCao = new BaoCao();
+            formBaoCao.ShowDialog();
+        }
+
+        private void báoCáoNămToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BaoCaoNam formBaoCaoNam = new BaoCaoNam();
+            formBaoCaoNam.ShowDialog();
         }
     }
 }

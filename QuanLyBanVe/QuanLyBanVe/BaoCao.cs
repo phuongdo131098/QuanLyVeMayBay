@@ -11,10 +11,16 @@ using System.Windows.Forms;
 namespace QuanLyBanVe
 {
     public partial class BaoCao : Form
-    {
+    {     
         public BaoCao()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+            QuanLy.BaoCao(dataGridView1, dateTimePicker1, dateTimePicker2, textBox1);              
         }
     }
 }

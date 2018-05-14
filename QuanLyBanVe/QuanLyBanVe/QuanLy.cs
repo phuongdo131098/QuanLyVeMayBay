@@ -43,7 +43,7 @@ namespace QuanLyBanVe
         public static void LoadSanBay(ComboBox comboBox)
         {
             using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
-            {               
+            {
                 conn.Open();
                 SqlCommand comm = new SqlCommand("SELECT TENSANBAY FROM SANBAY", conn);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -98,6 +98,68 @@ namespace QuanLyBanVe
                 dataGridView.DataSource = datb;
             }
             dataGridView.ClearSelection();
+        }
+        public static void BaoCao(DataGridView gridView, DateTimePicker dateDi, DateTimePicker dateDen,TextBox txt)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                gridView.RowHeadersVisible = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("BaoCao", conn);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@TuNgay", Convert.ToDateTime(dateDi.Value.ToString()));
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@DenNgay", Convert.ToDateTime(dateDen.Value.ToString()));
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = comm;
+
+                DataTable datb = new DataTable();
+                dataAdapter.Fill(datb);
+                gridView.DataSource = datb;
+                int sum = 0;
+                for (int i = 0; i < gridView.RowCount; i++)
+                {
+                    sum += Int32.Parse(gridView["DOANH THU", i].Value.ToString());
+                    gridView["Tỉ lệ", i].Value = Math.Round(Convert.ToDouble(gridView["Tỉ lệ", i].Value), 2);
+                }
+                txt.Text = sum.ToString();
+            }
+            gridView.ClearSelection();
+        }
+
+        public static void BaoCaoNam(DataGridView gridView, ComboBox box, TextBox txt)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                gridView.RowHeadersVisible = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("BaoCaoNam", conn);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@NAM", Int32.Parse(box.Text));
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = comm;
+
+                DataTable datb = new DataTable();
+                dataAdapter.Fill(datb);
+                gridView.DataSource = datb;
+                int sum = 0;
+                for(int i=0; i<gridView.RowCount; i++)
+                {
+                    sum += Int32.Parse(gridView["DOANH THU", i].Value.ToString());
+                    gridView["Tỉ lệ", i].Value = Math.Round(Convert.ToDouble(gridView["Tỉ lệ", i].Value), 2);
+                }
+                txt.Text = sum.ToString();
+            }
+            gridView.ClearSelection();             
         }
     }
 }
