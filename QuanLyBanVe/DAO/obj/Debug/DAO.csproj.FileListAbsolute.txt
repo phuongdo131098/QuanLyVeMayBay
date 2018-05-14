@@ -5,3 +5,12 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\bin\
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\obj\Debug\DAO.dll
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DAO\obj\Debug\DAO.pdb
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.pdb
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DTO.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DTO.pdb
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.CopyComplete
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.dll
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.pdb

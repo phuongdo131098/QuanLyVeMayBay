@@ -16,11 +16,11 @@ namespace QuanLyBanVe
         public Form1()
         {
             InitializeComponent();
-            QuanLy.UpdateDataGridView(dataGridView1);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            QuanLy.LoadDataToDataGridView(dataGridView1);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,339 +34,390 @@ namespace QuanLyBanVe
             taoThanhVien.ShowDialog();
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                btnSua.Enabled = true;
-                btnSaoChep.Enabled = true;
-                btnBanVe.Enabled = true;
-            }
-            else
-            {
-                btnSua.Enabled = false;
-                btnSaoChep.Enabled = false;
-                btnBanVe.Enabled = false;
-            }
-            if (dataGridView1.SelectedRows.Count != 0)
-                btnXoa.Enabled = true;
-            else btnXoa.Enabled = false;
-        }
-
         private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1)
+            if (dataGridView1.SelectedRows.Count != 0)
             {
-                btnSua.Enabled = true;
-                btnSaoChep.Enabled = true;
-                btnBanVe.Enabled = true;
+                btnXoa.Enabled = true;
             }
             else
             {
-                btnSua.Enabled = false;
-                btnSaoChep.Enabled = false;
-                btnBanVe.Enabled = false;
+                btnXoa.Enabled = false;
             }
-            if (dataGridView1.SelectedRows.Count != 0)
-                btnXoa.Enabled = true;
-            else btnXoa.Enabled = false;
+        }
+
+        private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count == 1)
+            {
+                DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
+                if (selectedCell.OwningRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
+                {
+                    btnSua.Enabled = true;
+                    return;
+                }
+                if (selectedCell.OwningColumn.Index != 0 && selectedCell.OwningRow.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
+                {
+                    btnSua.Enabled = true;
+                    return;
+                }
+            }
+            btnSua.Enabled = false;
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            QuanLy.AddRowToDataGridView(dataGridView1);
+            DataGridViewRow newRow = dataGridView1.Rows[dataGridView1.Rows.Count - 1];
+            newRow.HeaderCell.Value = String.Format("{0}", newRow.Index + 1);
+
+            QuanLy.addedRows.Add(newRow);
+            newRow.DefaultCellStyle.BackColor = QuanLy.AddedRowColor;
+            dataGridView1.CurrentCell = newRow.Cells[0];
+
+            btnSave.Enabled = true;
+            btnCancelChanges.Enabled = true;
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            pnlSua.Visible = true;
-            textBox16.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            cbbMaSBDi.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            cbbMaSBDen.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            cbbHHK.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-
-            textBox11.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
-            textBox10.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
-            textBox9.Text = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
-            
-            btnLuuThayDoi.Enabled = false;
+            dataGridView1.CurrentCell = dataGridView1.SelectedCells[0];
+            if (dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[1] ||
+                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[2] ||
+                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[3] ||
+                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[4] ||
+                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[5])
+            {
+                splitContainer1.Panel1.Enabled = false;
+                QuanLy.LoadSanBay(cbbMaSBDi);
+                QuanLy.LoadSanBay(cbbMaSBDen);
+                QuanLy.LoadHHK(cbbHHK);
+                panel1.Location = new Point(splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18, 0);
+                panel1.Visible = true;
+            }
+            else
+            {
+                dataGridView1.BeginEdit(true);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa vĩnh viễn (các) bản ghi này?", "Xóa bản ghi", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                if (row.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
                 {
-                    connection.Open();
-                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    row.ReadOnly = true;
+                    if (row.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
                     {
-                        using (SqlCommand command = new SqlCommand("XoaChuyenBay", connection))
-                        {
-                            command.CommandType = CommandType.StoredProcedure;
-
-                            SqlParameter parameter = new SqlParameter("@MaCB", row.Cells[0].Value.ToString());
-                            command.Parameters.Add(parameter);
-
-                            command.ExecuteNonQuery();
-                        }
+                        row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
+                        QuanLy.addedRows.Remove(row);
+                        continue;
                     }
+                    if (row.DefaultCellStyle.BackColor == QuanLy.ModifiedRowColor)
+                    {
+                        QuanLy.removedRows.Add(row);
+                        row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
+                        QuanLy.modifiedRows.Remove(row);
+                        continue;
+                    }
+                    QuanLy.removedRows.Add(row);
+                    row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
                 }
-                QuanLy.UpdateDataGridView(dataGridView1);
+            }
+            dataGridView1.ClearSelection();
+            btnSave.Enabled = true;
+            btnCancelChanges.Enabled = true;
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            btnSua.Enabled = false;
+            btnSave.Enabled = false;
+            btnCancelChanges.Enabled = false;
+
+            DataGridViewCell modifiedCell = dataGridView1.SelectedCells[0];
+            DataGridViewRow modifiedRow = modifiedCell.OwningRow;
+            if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
+                modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
+            {
+                QuanLy.modifiedRows.Add(modifiedRow);
+                modifiedRow.DefaultCellStyle.BackColor = QuanLy.ModifiedRowColor;
             }
         }
 
-        private void btnSaoChep_Click(object sender, EventArgs e)
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            comboBox1.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            comboBox2.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            comboBox3.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-           
-            textBox6.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            textBox7.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
-            textBox8.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
-            textBox1.Focus();
+            btnSua.Enabled = true;
+            btnSave.Enabled = true;
+            btnCancelChanges.Enabled = true;
         }
 
-        private void btnSelectAll_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            btnSave.Enabled = false;
+            if (!QuanLy.CheckAffectedRows(dataGridView1))
+            {
+                /* Show error(s) to the user */
+                MessageBox.Show("Có lỗi khi cập nhật dữ liệu vào CDSL. Vui lòng kiểm tra lại các thay đổi của bạn.", "Cập nhật không thành công");
+                QuanLy.ShowErrorText(lblUpdateStatus);
+                QuanLy.errors.Clear();
+            }
+            else
+            {
+                /* Save the changes */
+                btnCancelChanges.Enabled = false;
+                foreach (DataGridViewRow row in QuanLy.addedRows)
+                {
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("ThemCB", connection)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        };
+                        QuanLy.AddParametersToCommand(command, row);
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                foreach (DataGridViewRow row in QuanLy.modifiedRows)
+                {
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("SuaCB", connection)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        };
+                        QuanLy.AddParametersToCommand(command, row);
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                foreach (DataGridViewRow row in QuanLy.removedRows)
+                {
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    {
+                        connection.Open();
+                        SqlCommand command = new SqlCommand("XoaCB", connection)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        };
+                        QuanLy.AddParametersToCommand(command, row);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                QuanLy.ShowChangeLog(lblUpdateStatus);
+                QuanLy.addedRows.Clear();
+                QuanLy.modifiedRows.Clear();
+                QuanLy.removedRows.Clear();
+                QuanLy.LoadDataToDataGridView(dataGridView1);
+            }
+        }
+
+        private void btnCancelChanges_Click(object sender, EventArgs e)
+        {
+            btnSave.Enabled = false;
+            btnCancelChanges.Enabled = false;
+            QuanLy.addedRows.Clear();
+            QuanLy.modifiedRows.Clear();
+            QuanLy.removedRows.Clear();
+            QuanLy.LoadDataToDataGridView(dataGridView1);
+        }
+
+        private void buttonOK1_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow modifiedRow = dataGridView1.CurrentCell.OwningRow;
+            if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
+                modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
+            {
+                QuanLy.modifiedRows.Add(modifiedRow);
+                modifiedRow.DefaultCellStyle.BackColor = QuanLy.ModifiedRowColor;
+            }
+            modifiedRow.Cells[1].Value = cbbMaSBDi.Text;
+            modifiedRow.Cells[2].Value = cbbMaSBDen.Text;
+            modifiedRow.Cells[3].Value = cbbHHK.Text;
+            modifiedRow.Cells[4].Value = departureTime.Text;
+            modifiedRow.Cells[5].Value = arrivalTime.Text;
+
+            panel1.Visible = false;
+            splitContainer1.Panel1.Enabled = true;
+            btnSua.Enabled = true;
+
+            btnSave.Enabled = true;
+            btnCancelChanges.Enabled = true;
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            splitContainer1.Panel1.Enabled = true;
+            btnSua.Enabled = true;
+        }
+
+        /* cellContextMenuStrip1 */
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dataGridView1.ClearSelection();
+                DataGridViewCell clickedCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                dataGridView1.CurrentCell = clickedCell;
+                clickedCell.Selected = true;
+                /* Determine whether modifyCellToolStripMenuItem can be enabled */
+                if (clickedCell.OwningRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
+                {
+                    modifyCellToolStripMenuItem.Enabled = true;
+                }
+                else if (clickedCell.OwningColumn.Index != 0 && clickedCell.OwningRow.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
+                {
+                    modifyCellToolStripMenuItem.Enabled = true;
+                }
+                else modifyCellToolStripMenuItem.Enabled = false;
+                /* Determine whether copyRowToolStripMenuItem can be enabled */
+                if (clickedCell.OwningRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor)
+                {
+                    copyRowToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    copyRowToolStripMenuItem.Enabled = false;
+                }
+                /* Determine whether pasteRowToolStripMenuItem can be enabled */
+                if (QuanLy.duplicate != null && clickedCell.OwningRow.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
+                {
+                    pasteRowToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    pasteRowToolStripMenuItem.Enabled = false;
+                }
+                cellContextMenuStrip1.Show(MousePosition);
+            }
+        }
+
+        private void modifyCellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnSua_Click(sender, e);
+        }
+
+        private void selectRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.CurrentCell.OwningRow.Selected = true;
+        }
+
+        private void copyRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow rowToCopy = dataGridView1.CurrentCell.OwningRow;
+            rowToCopy.Selected = true;
+            QuanLy.duplicate = (DataGridViewRow)rowToCopy.Clone();
+            for (int i = 0; i < 9; i++)
+            {
+                QuanLy.duplicate.Cells[i].Value = rowToCopy.Cells[i].Value;
+            }
+            lblUpdateStatus.ForeColor = QuanLy.ChangeLogColor;
+            lblUpdateStatus.Text = "Đã sao chép hàng " + (rowToCopy.Index + 1).ToString() + " (MACB = '" + rowToCopy.Cells[0].Value.ToString() + "').";
+        }
+
+        private void pasteRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow modifiedRow = dataGridView1.CurrentCell.OwningRow;
+            if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
+                modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
+            {
+                QuanLy.modifiedRows.Add(modifiedRow);
+                modifiedRow.DefaultCellStyle.BackColor = QuanLy.ModifiedRowColor;
+            }
+            for (int i = 1; i < 9; i++)
+            {
+                modifiedRow.Cells[i].Value = QuanLy.duplicate.Cells[i].Value;
+            }
+            dataGridView1.ClearSelection();
+            btnSave.Enabled = true;
+            btnCancelChanges.Enabled = true;
+        }
+
+        private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.CurrentCell.OwningRow.Selected = true;
+            btnXoa_Click(sender, e);
+        }
+
+        /* contextMenuStrip1 */
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(MousePosition);
+            }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCancelChanges_Click(sender, e);
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.SelectAll();
         }
 
-        private void btnClearSelection_Click(object sender, EventArgs e)
+        private void clearSelectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.ClearSelection();
         }
 
-        private void btnLuuMoi_Click(object sender, EventArgs e)
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (textBox1.Text != "")
+            if (e.Button == MouseButtons.Left)
             {
-                try
-                {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
-                    {
-                        connection.Open();
-
-                        SqlCommand command = new SqlCommand("ThemCB", connection);
-                        command.CommandType = CommandType.StoredProcedure;
-                         
-                        SqlParameter parameter;
-                        parameter = new SqlParameter("@MaCB", textBox1.Text);
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@MaSBDi", comboBox1.Text);
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@MaSBDen", comboBox2.Text);
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@MaHHK", comboBox3.Text);
-                        command.Parameters.Add(parameter);
-                    
-                        parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(dateTimePicker1.Value.ToString()));
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@ThoiGianDen", Convert.ToDateTime(dateTimePicker2.Value.ToString()));
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@SoGheHang1", int.Parse(textBox6.Text));
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@SoGheHang2", int.Parse(textBox7.Text));
-                        command.Parameters.Add(parameter);
-
-                        parameter = new SqlParameter("@GiaVe", int.Parse(textBox8.Text));
-                        command.Parameters.Add(parameter);
-
-                        command.ExecuteNonQuery();
-                    }
-                    QuanLy.UpdateDataGridView(dataGridView1);
-                }
-                catch (Exception) when (textBox6.Text == "" || textBox7.Text == "" || textBox8.Text == "")
-                {
-                    MessageBox.Show("Vui lòng không bỏ trống các trường có ký hiệu (*).");
-                }
-                catch (Exception)
-                {
-                    DataGridViewRow existingRow = QuanLy.FindRowInDataGridView(dataGridView1, textBox1.Text);
-                    if (existingRow != null)
-                    {
-                        MessageBox.Show("Chuyến bay '" + textBox1.Text + "' đã tồn tại trong CSDL. Nếu muốn thay đổi dữ liệu của chuyến bay này, vui lòng nhấn 'Sửa'.");
-                        dataGridView1.ClearSelection();
-                        existingRow.Selected = true;
-                    }
-                }
-            }
-            else MessageBox.Show("Chưa nhập MACB.");
-        }
-
-        private void btnLuuThayDoi_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
-                {
-                    connection.Open();
-
-                    SqlCommand command = new SqlCommand("SuaCB", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter parameter;
-                    parameter = new SqlParameter("@MaCB", textBox16.Text);
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@MaSBDi", cbbMaSBDi.Text);
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@MaSBDen", cbbMaSBDen.Text);
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@MaHHK", cbbHHK.Text);
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(dateTimePicker1.Value.ToString()));
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@ThoiGianDen", Convert.ToDateTime(dateTimePicker2.Value.ToString()));
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@SoGheHang1", int.Parse(textBox11.Text));
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@SoGheHang2", int.Parse(textBox10.Text));
-                    command.Parameters.Add(parameter);
-
-                    parameter = new SqlParameter("@GiaVe", int.Parse(textBox9.Text));
-                    command.Parameters.Add(parameter);
-
-                    command.ExecuteNonQuery();
-                }
-                QuanLy.UpdateDataGridView(dataGridView1);
-                // Tắt sửa chuyến bay
-                pnlSua.Visible = false;
-                cbbMaSBDen.Text = null;
-                cbbMaSBDi.Text = null;
-                cbbHHK.Text = null;
-                textBox16.Clear();           
-
-                textBox11.Clear();
-                textBox10.Clear();
-                textBox9.Clear();
-            }
-            catch (Exception) when (textBox11.Text == "" || textBox10.Text == "" || textBox9.Text == "")
-            {
-                MessageBox.Show("Vui lòng không bỏ trống các trường có ký hiệu (*).");
+                dataGridView1.EndEdit();
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            pnlSua.Visible = false;
-            cbbMaSBDen.Text = null;
-            cbbMaSBDi.Text = null;
-            cbbHHK.Text = null;
-            textBox16.Clear();
-
-            textBox11.Clear();
-            textBox10.Clear();
-            textBox9.Clear();
+            if (e.KeyCode == Keys.Escape)
+            {
+                panel1.Visible = false;
+                splitContainer1.Panel1.Enabled = true;
+                btnSua.Enabled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
-        private void textBox12_TextChanged(object sender, EventArgs e)
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
+            if (e.Button == MouseButtons.Left)
+            {
+                QuanLy.panel1_MouseDownLocation = e.Location;
+            }
         }
 
-        private void textBox11_TextChanged(object sender, EventArgs e)
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
+            if (e.Button == MouseButtons.Left)
+            {
+                int left = e.X + panel1.Left - QuanLy.panel1_MouseDownLocation.X;
+                if (left >= 0 && left <= splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18)
+                    panel1.Left = left;
+                else if (left < 0)
+                    panel1.Left = 0;
+                else
+                    panel1.Left = splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18;
+
+                int top = e.Y + panel1.Top - QuanLy.panel1_MouseDownLocation.Y;
+                if (top >= 0 && top <= splitContainer1.Panel2.Size.Height - panel1.Size.Height)
+                    panel1.Top = top;
+                else if (top < 0)
+                    panel1.Top = 0;
+                else
+                    panel1.Top = splitContainer1.Panel2.Size.Height - panel1.Size.Height;
+            }
         }
 
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuMoi.Enabled)
-                btnLuuMoi.Enabled = true;
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            textBox1.Clear();
-            comboBox1.Text = null;
-            comboBox2.Text = null;
-            comboBox3.Text = null;
-
-            textBox6.Clear();
-            textBox7.Clear();
-            textBox8.Clear();
-            btnLuuMoi.Enabled = false;
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            cbbMaSBDen.Text = null;
-            cbbMaSBDi.Text = null;
-            cbbHHK.Text = null;
-
-            textBox11.Clear();
-            textBox10.Clear();
-            textBox9.Clear();
-            btnLuuThayDoi.Enabled = false;
-        }
-
+        /* dataGridView2 */
         private void cbbNoiDi_DropDown(object sender, EventArgs e)
         {
             QuanLy.LoadSanBay(cbbNoiDi);
@@ -375,6 +426,7 @@ namespace QuanLyBanVe
         {
             QuanLy.LoadSanBay(cbbNoiDen);
         }
+
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             if (cbbNoiDen.Text == cbbNoiDi.Text)
@@ -385,105 +437,12 @@ namespace QuanLyBanVe
             {
                 QuanLy.TraCuu(dataGridView2, cbbNoiDi, cbbNoiDen, dateTraCuu);
             }
-         
-        }
 
-        private void cbbMaSBDi_DropDown(object sender, EventArgs e)
-        {
-            QuanLy.LoadSanBay(cbbMaSBDi);
-
-        }
-        private void cbbMaSBDen_DropDown(object sender, EventArgs e)
-        {
-            QuanLy.LoadSanBay(cbbMaSBDen);
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnBanVe2.Enabled = true;
-        }
-
-        private void comboBox1_DropDown(object sender, EventArgs e)
-        {
-            QuanLy.LoadHHK(cbbHHK);
-        }
-
-        private void cbbMaSBDi_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void cbbMaSBDen_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void cbbHHK_TextChanged(object sender, EventArgs e)
-        {
-            if (!btnLuuThayDoi.Enabled)
-                btnLuuThayDoi.Enabled = true;
-        }
-
-        private void comboBox1_DropDown_1(object sender, EventArgs e)
-        {
-            QuanLy.LoadSanBay(comboBox1);
-        }
-
-        private void comboBox2_DropDown(object sender, EventArgs e)
-        {
-            QuanLy.LoadSanBay(comboBox2);
-        }
-
-        private void comboBox3_DropDown(object sender, EventArgs e)
-        {
-            QuanLy.LoadHHK(comboBox3);
-        }
-        private void sửaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnSua_Click(sender, e);
-        }
-
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                DataGridView.HitTestInfo hti = ((DataGridView)sender).HitTest(e.X, e.Y);
-                if (hti.Type == DataGridViewHitTestType.Cell)
-                {
-                    contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
-                    dataGridView1.ClearSelection();
-                    dataGridView1.Rows[hti.RowIndex].Selected = true;
-                }
-            }
-            pictureBox1_Click(sender, e);
-        }       
-        private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnXoa_Click(sender, e);
-        }
-
-        private void làmMớiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            QuanLy.UpdateDataGridView(dataGridView1);
-        }
-
-        private void btnBanVe_Click(object sender, EventArgs e)
-        {
-            string maCB = getMaCB(dataGridView1);
-            BanVe formBanVe = new BanVe(maCB);
-            formBanVe.ShowDialog();
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            btnLuuThayDoi.Enabled = true;
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            btnLuuThayDoi.Enabled = true;
         }
 
         private void btnBanVe2_Click(object sender, EventArgs e)
@@ -496,16 +455,6 @@ namespace QuanLyBanVe
         private string getMaCB(DataGridView dataGridView1)
         {
             return dataGridView1.CurrentRow.Cells[0].Value.ToString();
-        }
-
-        private void bánVéToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnBanVe_Click(sender, e);
-        }
-
-        private void bánVéToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            btnBanVe2_Click(sender, e);
         }
 
         private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
@@ -527,14 +476,14 @@ namespace QuanLyBanVe
 
         }
 
+        private void bánVéToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            btnBanVe2_Click(sender, e);
+        }
+
         private void làmMớiToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             btnTraCuu_Click(sender, e);
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void báoCáoToolStripMenuItem1_Click(object sender, EventArgs e)

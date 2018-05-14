@@ -13,13 +13,9 @@ namespace QuanLyBanVe
     public partial class DangNhap : Form
     {
         private DialogResult loginResult;
-
         public DialogResult LoginResult
         {
-            get
-            {
-                return loginResult;
-            }
+            get { return loginResult; }
         }
 
         public DangNhap()
@@ -32,15 +28,13 @@ namespace QuanLyBanVe
             if (txtTenDangNhap.Text == "admin" && txtMatKhau.Text == "admin")
             {
                 this.loginResult = DialogResult.OK;
-                MessageBox.Show("Đăng nhập thành công!");
                 Close();
             }
             else
             {
                 this.loginResult = DialogResult.Retry;
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                MessageBox.Show("Vui lòng kiểm tra lại tên đăng nhập và mật khẩu.", "Đăng nhập không thành công");
                 txtTenDangNhap.Focus();
-                txtMatKhau.Clear();
             }
         }
     }
