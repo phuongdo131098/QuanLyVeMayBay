@@ -96,6 +96,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnThanhToan = new System.Windows.Forms.Button();
+            this.btnHoanVe = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -116,6 +118,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnHoanVe);
+            this.tabPage3.Controls.Add(this.btnThanhToan);
             this.tabPage3.Controls.Add(this.btnTim);
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Controls.Add(this.label2);
@@ -125,7 +129,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(966, 504);
+            this.tabPage3.Size = new System.Drawing.Size(958, 497);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cập nhật vé";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -135,17 +139,25 @@
             this.btnTim.Location = new System.Drawing.Point(323, 32);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(66, 27);
-            this.btnTim.TabIndex = 5;
+            this.btnTim.TabIndex = 2;
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(6, 70);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(856, 320);
-            this.dataGridView3.TabIndex = 4;
+            this.dataGridView3.TabIndex = 3;
+            this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             // 
             // label2
             // 
@@ -195,7 +207,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(966, 504);
+            this.tabPage2.Size = new System.Drawing.Size(958, 497);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tra cứu";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -204,7 +216,7 @@
             // 
             this.btnBanVe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBanVe2.Enabled = false;
-            this.btnBanVe2.Location = new System.Drawing.Point(884, 21);
+            this.btnBanVe2.Location = new System.Drawing.Point(877, 21);
             this.btnBanVe2.Name = "btnBanVe2";
             this.btnBanVe2.Size = new System.Drawing.Size(75, 27);
             this.btnBanVe2.TabIndex = 4;
@@ -289,7 +301,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(954, 320);
+            this.dataGridView2.Size = new System.Drawing.Size(946, 320);
             this.dataGridView2.TabIndex = 6;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -300,7 +312,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(966, 504);
+            this.tabPage1.Size = new System.Drawing.Size(958, 497);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhận lịch chuyến bay";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -339,7 +351,7 @@
             // 
             this.btnCancelChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelChanges.Enabled = false;
-            this.btnCancelChanges.Location = new System.Drawing.Point(855, -1);
+            this.btnCancelChanges.Location = new System.Drawing.Point(847, 0);
             this.btnCancelChanges.Name = "btnCancelChanges";
             this.btnCancelChanges.Size = new System.Drawing.Size(100, 27);
             this.btnCancelChanges.TabIndex = 8;
@@ -351,7 +363,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(774, -1);
+            this.btnSave.Location = new System.Drawing.Point(769, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 7;
@@ -361,7 +373,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(-1, -1);
+            this.btnThem.Location = new System.Drawing.Point(1, 1);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(85, 27);
             this.btnThem.TabIndex = 6;
@@ -372,7 +384,7 @@
             // btnSua
             // 
             this.btnSua.Enabled = false;
-            this.btnSua.Location = new System.Drawing.Point(181, -1);
+            this.btnSua.Location = new System.Drawing.Point(183, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(85, 27);
             this.btnSua.TabIndex = 0;
@@ -383,7 +395,7 @@
             // btnXoa
             // 
             this.btnXoa.Enabled = false;
-            this.btnXoa.Location = new System.Drawing.Point(90, -1);
+            this.btnXoa.Location = new System.Drawing.Point(92, 1);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(85, 27);
             this.btnXoa.TabIndex = 1;
@@ -403,10 +415,10 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(954, 311);
+            this.dataGridView1.Size = new System.Drawing.Size(944, 311);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -434,7 +446,7 @@
             this.panel1.Controls.Add(this.cbbMaSBDi);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.panel1.Location = new System.Drawing.Point(241, 0);
+            this.panel1.Location = new System.Drawing.Point(241, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 115);
             this.panel1.TabIndex = 6;
@@ -488,7 +500,7 @@
             // 
             // departureTime
             // 
-            this.departureTime.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.departureTime.CustomFormat = "MM/dd/yyyy HH:mm";
             this.departureTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.departureTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.departureTime.Location = new System.Drawing.Point(405, 47);
@@ -501,7 +513,7 @@
             // arrivalTime
             // 
             this.arrivalTime.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.arrivalTime.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.arrivalTime.CustomFormat = "MM/dd/yyyy HH:mm";
             this.arrivalTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.arrivalTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.arrivalTime.Location = new System.Drawing.Point(546, 47);
@@ -608,8 +620,9 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(974, 532);
+            this.tabControl1.Size = new System.Drawing.Size(966, 525);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // cellContextMenuStrip1
             // 
@@ -761,7 +774,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -785,7 +798,7 @@
             this.báoCáoToolStripMenuItem1,
             this.báoCáoNămToolStripMenuItem});
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo...";
             // 
             // báoCáoToolStripMenuItem1
@@ -822,6 +835,28 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.Enabled = false;
+            this.btnThanhToan.Location = new System.Drawing.Point(673, 396);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(87, 32);
+            this.btnThanhToan.TabIndex = 4;
+            this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
+            // 
+            // btnHoanVe
+            // 
+            this.btnHoanVe.Enabled = false;
+            this.btnHoanVe.Location = new System.Drawing.Point(766, 396);
+            this.btnHoanVe.Name = "btnHoanVe";
+            this.btnHoanVe.Size = new System.Drawing.Size(83, 32);
+            this.btnHoanVe.TabIndex = 5;
+            this.btnHoanVe.Text = "Hoàn vé";
+            this.btnHoanVe.UseVisualStyleBackColor = true;
+            this.btnHoanVe.Click += new System.EventHandler(this.btnHoanVe_Click);
             // 
             // Form1
             // 
@@ -933,6 +968,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnHoanVe;
+        private System.Windows.Forms.Button btnThanhToan;
     }
 }
 

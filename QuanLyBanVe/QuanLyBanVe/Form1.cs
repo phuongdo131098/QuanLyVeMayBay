@@ -169,7 +169,7 @@ namespace QuanLyBanVe
                 btnCancelChanges.Enabled = false;
                 foreach (DataGridViewRow row in QuanLy.addedRows)
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("ThemCB", connection)
@@ -183,7 +183,7 @@ namespace QuanLyBanVe
 
                 foreach (DataGridViewRow row in QuanLy.modifiedRows)
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("SuaCB", connection)
@@ -197,7 +197,7 @@ namespace QuanLyBanVe
 
                 foreach (DataGridViewRow row in QuanLy.removedRows)
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("XoaCB", connection)
@@ -497,5 +497,33 @@ namespace QuanLyBanVe
             BaoCaoNam formBaoCaoNam = new BaoCaoNam();
             formBaoCaoNam.ShowDialog();
         }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            QuanLy.CapNhatVe(dataGridView3, cbbMaCB, cbbMaVe);
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            QuanLy.LoadDuLieu(cbbMaCB, cbbMaVe);
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            QuanLy.ThanhToan(dataGridView3, cbbMaVe);
+            QuanLy.CapNhatVe(dataGridView3, cbbMaCB, cbbMaVe);
+        }
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnThanhToan.Enabled = true;
+            btnHoanVe.Enabled = true;            
+        }
+
+        private void btnHoanVe_Click(object sender, EventArgs e)
+        {
+            QuanLy.HoanVe(dataGridView3, cbbMaVe);
+            QuanLy.CapNhatVe(dataGridView3, cbbMaCB, cbbMaVe);
+        }
+ 
     }
 }

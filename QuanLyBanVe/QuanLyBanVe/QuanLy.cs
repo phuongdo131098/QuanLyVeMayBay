@@ -63,7 +63,8 @@ namespace QuanLyBanVe
 
         public static void LoadDataToDataGridView(DataGridView dgv)
         {
-            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("LietKeCB", connection)
@@ -180,7 +181,7 @@ namespace QuanLyBanVe
 
         public static void AddParametersToCommand(SqlCommand cmd, DataGridViewRow row)
         {
-            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 connection.Open();
                 SqlParameter parameter;
@@ -189,13 +190,13 @@ namespace QuanLyBanVe
                 cmd.Parameters.Add(parameter);
                 if (cmd.CommandText == "ThemCB" || cmd.CommandText == "SuaCB")
                 {
-                    parameter = new SqlParameter("@TenSBDi", row.Cells[1].Value.ToString());
+                    parameter = new SqlParameter("@MaSBDi", row.Cells[1].Value.ToString());
                     cmd.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@TenSBDen", row.Cells[2].Value.ToString());
+                    parameter = new SqlParameter("@MaSBDen", row.Cells[2].Value.ToString());
                     cmd.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@TenHHK", row.Cells[3].Value.ToString());
+                    parameter = new SqlParameter("@MaHHK", row.Cells[3].Value.ToString());
                     cmd.Parameters.Add(parameter);
 
                     parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(row.Cells[4].Value.ToString()));
@@ -263,7 +264,7 @@ namespace QuanLyBanVe
 
         public static void LoadSanBay(ComboBox comboBox)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", conn);
@@ -278,7 +279,7 @@ namespace QuanLyBanVe
 
         public static void LoadHHK(ComboBox comboBox)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 conn.Open();
                 SqlCommand comm = new SqlCommand("SELECT TENHHK FROM HANGHK", conn);
@@ -295,7 +296,7 @@ namespace QuanLyBanVe
 
         public static void TraCuu(DataGridView dataGridView, ComboBox cbbDi, ComboBox cbbDen, DateTimePicker date)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 dataGridView.RowHeadersVisible = false;
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
@@ -322,7 +323,7 @@ namespace QuanLyBanVe
         }
         public static void BaoCao(DataGridView gridView, DateTimePicker dateDi, DateTimePicker dateDen,TextBox txt)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -355,7 +356,7 @@ namespace QuanLyBanVe
 
         public static void BaoCaoNam(DataGridView gridView, ComboBox box, TextBox txt)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -381,6 +382,124 @@ namespace QuanLyBanVe
                 txt.Text = sum.ToString();
             }
             gridView.ClearSelection();             
+        }
+        public static void CapNhatVe(DataGridView gridView, ComboBox boxMaCB, ComboBox boxMaVe)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                gridView.RowHeadersVisible = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("LoadVe", conn);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", boxMaCB.Text);
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@MaVe", boxMaVe.Text);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable datb = new DataTable();
+                adapter.Fill(datb);
+                gridView.DataSource = datb;
+            }
+            gridView.ClearSelection();   
+        }
+        public static void LoadDuLieu(ComboBox boxMaCB, ComboBox boxMaVe)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", conn);
+                DataTable datb = new DataTable();
+
+                adapter.Fill(datb);
+                boxMaCB.DataSource = datb;
+                boxMaCB.ValueMember = "MACB";
+                boxMaCB.DisplayMember = "MACB";
+                boxMaCB.Text = null;
+
+                adapter = new SqlDataAdapter("SELECT MAVE FROM VE", conn);
+                datb = new DataTable();
+                adapter.Fill(datb);
+                boxMaVe.DataSource = datb;
+                boxMaVe.ValueMember = "MAVE";
+                boxMaVe.DisplayMember = "MAVE";
+                boxMaVe.Text = null;
+            }
+        }
+        public static void ThanhToan(DataGridView gridView, ComboBox boxMaVe)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                gridView.RowHeadersVisible = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("ThanhToan", conn);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter();
+                if (boxMaVe.Text != "")
+                {
+                    para = new SqlParameter("@MaVe", boxMaVe.Text);
+                }
+                else
+                {
+                    string maVe = gridView.CurrentRow.Cells["MAVE"].Value.ToString();
+                    para = new SqlParameter("@MaVe", maVe);
+                }
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+
+                int check = comm.ExecuteNonQuery();
+                if(check!= 0)
+                {
+                    MessageBox.Show("Thanh toán vé thành công!", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Vé đã được thanh toán trước đó!", "Thông báo", MessageBoxButtons.OK);
+                }
+            }
+        }
+        public static void HoanVe(DataGridView gridView, ComboBox boxMaVe)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                gridView.RowHeadersVisible = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("HoanVe", conn);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter();
+                if(boxMaVe.Text != "")
+                {
+                    para = new SqlParameter("@MaVe", boxMaVe.Text);
+                }
+                else
+                {
+                    string maVe = gridView.CurrentRow.Cells["MAVE"].Value.ToString();
+                    para = new SqlParameter("@MaVe", maVe);
+                }
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+
+                int check = comm.ExecuteNonQuery();
+                if (check != 0)
+                {
+                    MessageBox.Show("Cập nhật vé thành công!", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật vé thất bại!", "Thông báo", MessageBoxButtons.OK);
+                }
+            }
         }
     }
 }
